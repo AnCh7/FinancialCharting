@@ -13,7 +13,7 @@ using ServiceStack.Text;
 namespace FinancialCharting.Library.Models.MarketData.Common
 {
 	[DataContract]
-	public class DateComponent : IMarketData
+	public class DateComponent
 	{
 		public DateComponent(List<object> data)
 		{

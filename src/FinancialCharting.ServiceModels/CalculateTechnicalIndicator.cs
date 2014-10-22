@@ -12,7 +12,7 @@ using ServiceStack.ServiceHost;
 
 namespace FinancialCharting.ServiceModels
 {
-	[Route("/indicator/{Type}/{Period1}/", "GET")]
+	[Route("/indicator/{Type}/{Period1}", "GET")]
 	public class CalculateTechnicalIndicator : IReturn<CalculateTechnicalIndicatorResponse>
 	{
 		[ApiMember(Name = "Type", ParameterType = "path", DataType = "complex", IsRequired = true)]

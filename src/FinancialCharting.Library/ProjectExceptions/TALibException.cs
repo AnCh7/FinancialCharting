@@ -12,5 +12,9 @@ namespace FinancialCharting.Library.ProjectExceptions
 		public TALibException(Exception inner)
 			: base("Indicator calculation failed", inner)
 		{}
+
+		public TALibException(string message, Exception inner)
+			: base(message, inner)
+		{}
 	}
 }

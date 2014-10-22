@@ -1,7 +1,9 @@
 ﻿#region Usings
 
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 using Autofac;
 
@@ -230,6 +232,31 @@ namespace FinancialCharting.Service
 			catch (Exception ex)
 			{
 				response.ResponseStatus = new ResponseStatus(string.Empty, ex.Message);
+			}
+
+			return response;
+		}
+
+		public object Get(GetSupportedIndicators request)
+		{
+			var response = new GetSupportedIndicatorsResponse();
+
+			try
+			{
+				var result = (from object x in Enum.GetValues(typeof (IndicatorType)) select x.ToString()).ToList();
+				if (result.Any())
+				{
+					response.Success = true;
+					response.Data = result;
+				}
+				else
+				{
+					response.ResponseStatus = new ResponseStatus(string.Empty, "Error");
+				}
+			}
+			catch (Exception ex)
+			{
+				response.ResponseStatus.Message = ex.Message;
 			}
 
 			return response;

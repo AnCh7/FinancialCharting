@@ -11,7 +11,7 @@ using ServiceStack.ServiceHost;
 namespace FinancialCharting.ServiceModels
 {
 	[Route("/tickers", "GET")]
-	[Route("/tickers/{PerPage}/{PageNumber}/", "GET")]
+	[Route("/tickers/{PerPage}/{PageNumber}", "GET")]
 	public class GetTickers : IReturn<GetTickersResponse>
 	{
 		[ApiMember(Name = "PerPage", ParameterType = "path", DataType = "int", IsRequired = true)]

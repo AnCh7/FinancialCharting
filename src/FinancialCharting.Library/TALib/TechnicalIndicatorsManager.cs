@@ -8,6 +8,8 @@ using FinancialCharting.Library.Enum;
 using FinancialCharting.Library.Logging;
 using FinancialCharting.Library.Models.Common;
 using FinancialCharting.Library.Models.Indicator;
+using FinancialCharting.Library.Models.MarketData.Common;
+using FinancialCharting.Library.Models.MarketData.Custom;
 using FinancialCharting.Library.Models.MarketData.Interfaces;
 using FinancialCharting.Library.ProjectExceptions;
 using FinancialCharting.Library.TALib.Interfaces;
@@ -31,6 +33,20 @@ namespace FinancialCharting.Library.TALib
 
 		public OperationResult<List<Indicator>> CalculateIndicator(List<IMarketData> data, BaseIndicatorParameters parameters)
 		{
+			if (data.First().GetType() != typeof (OhlcData) ||
+				data.First().GetType() != typeof (OhlcvData) ||
+				data.First().GetType() != typeof (OhlcvOpenInterestData) ||
+				data.First().GetType() != typeof (YahooData) ||
+				data.First().GetType() != typeof (BudapestseData) ||
+				data.First().GetType() != typeof (SgxData))
+			{
+				throw new IndicatorException("Cannot calculate indicator for current datasource");
+			}
+			else
+			{
+				
+			}
+
 			try
 			{
 				switch (parameters.Type)
@@ -40,39 +56,38 @@ namespace FinancialCharting.Library.TALib
 						//var closes = data.Cast < DateClose(x => x.Value).ToList();
 						//return CalculateBbands(dates, closes, parameters);
 
-						//case IndicatorType.RSI:
+					case IndicatorType.RSI:
 						//	list.AddRange(CalculateRsi(data, parameters));
 						//	break;
 
-						//case IndicatorType.SMA:
-						//	list.AddRange(CalculateSma(data, parameters));
-						//	break;
+					case IndicatorType.SMA:
+						//var dates = data.Select(x => x.Date).ToList();
+						//var closes = data.Select(x => x.Close).ToList();
+						//return CalculateSma(dates, closes, parameters);
 
-						//case IndicatorType.EMA:
-						//	list.AddRange(CalculateEma(data, parameters));
-						//	break;
+					case IndicatorType.EMA:
+						//return CalculateEma(data, parameters);
 
-						//case IndicatorType.WMA:
-						//	list.AddRange(CalculateWma(data, parameters));
-						//	break;
+					case IndicatorType.WMA:
+						//return CalculateWma(data, parameters);
 
-						//case IndicatorType.STOCH:
+					case IndicatorType.STOCH:
 						//	list.AddRange(CalculateStoch(data, parameters));
 						//	break;
 
-						//case IndicatorType.AROON:
+					case IndicatorType.AROON:
 						//	list.AddRange(CalculateAroon(data, parameters));
 						//	break;
 
-						//case IndicatorType.AROONOSC:
+					case IndicatorType.AROONOSC:
 						//	list.AddRange(CalculateAroonOsc(data, parameters));
 						//	break;
 
-						//case IndicatorType.ADX:
+					case IndicatorType.ADX:
 						//	list.AddRange(CalculateAdx(data, parameters));
 						//	break;
 
-						//case IndicatorType.MACD:
+					case IndicatorType.MACD:
 						//	list.AddRange(CalculateMacd(data, parameters));
 						//	break;
 

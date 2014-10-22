@@ -12,5 +12,9 @@ namespace FinancialCharting.Library.ProjectExceptions
 		public ParsingException(Exception inner)
 			: base("Parsing failed", inner)
 		{}
+
+		public ParsingException(string message, Exception inner)
+			: base(message, inner)
+		{}
 	}
 }
