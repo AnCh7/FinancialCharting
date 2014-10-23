@@ -14,7 +14,7 @@ namespace FinancialCharting.Library.Models.MarketData.Common
 {
 	/// PHILSE ["Date","Open","High","Low","Close"]
 	[DataContract]
-	public class OhlcData : IOhlc
+	public class OhlcData : IOhlc, IMarketData
 	{
 		public OhlcData(List<object> data)
 		{

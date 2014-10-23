@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
+using FinancialCharting.Library.Models.MarketData.Interfaces;
+
 #endregion
 
 namespace FinancialCharting.Library.Models.MarketData.Common
@@ -20,7 +22,7 @@ namespace FinancialCharting.Library.Models.MarketData.Common
 	/// THAISE ["Year","Value"]
 	/// WSJ ["Date","Value"]
 	[DataContract]
-	public class SimpleDataOneField : DateComponent
+	public class SimpleDataOneField : DateComponent, IMarketData
 	{
 		public SimpleDataOneField(List<object> data) : base(data)
 		{

@@ -69,11 +69,11 @@
     <Compile Include="Models\DataSet.cs" />
     <Compile Include="Models\DataSource.cs" />
     <Compile Include="Models\Indicator\IndicatorsParameters.cs" />
+    <Compile Include="Models\MarketData\Interfaces\IMarketData.cs" />
     <Compile Include="Models\MarketData\Interfaces\IOhlc.cs" />
     <Compile Include="Models\MarketData\Common\SimpleDataFiveFields.cs" />
     <Compile Include="Models\MarketData\Common\SimpleDataFourFields.cs" />
     <Compile Include="Models\MarketData\Common\SimpleDataTwoFields.cs" />
-    <Compile Include="Models\MarketData\Interfaces\IMarketData.cs" />
     <Compile Include="Models\MarketData\Custom\BudapestseData.cs" />
     <Compile Include="Models\MarketData\Common\DateComponent.cs" />
     <Compile Include="Models\MarketData\Common\OhlcData.cs" />

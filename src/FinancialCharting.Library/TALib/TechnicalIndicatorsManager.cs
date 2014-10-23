@@ -8,8 +8,6 @@ using FinancialCharting.Library.Enum;
 using FinancialCharting.Library.Logging;
 using FinancialCharting.Library.Models.Common;
 using FinancialCharting.Library.Models.Indicator;
-using FinancialCharting.Library.Models.MarketData.Common;
-using FinancialCharting.Library.Models.MarketData.Custom;
 using FinancialCharting.Library.Models.MarketData.Interfaces;
 using FinancialCharting.Library.ProjectExceptions;
 using FinancialCharting.Library.TALib.Interfaces;
@@ -31,20 +29,17 @@ namespace FinancialCharting.Library.TALib
 			_taLibProvider = taLibProvider;
 		}
 
-		public OperationResult<List<Indicator>> CalculateIndicator(List<IMarketData> data, BaseIndicatorParameters parameters)
+		public OperationResult<List<Indicator>> CalculateIndicator(IEnumerable<IMarketData> data, BaseIndicatorParameters parameters)
 		{
-			if (data.First().GetType() != typeof (OhlcData) ||
-				data.First().GetType() != typeof (OhlcvData) ||
-				data.First().GetType() != typeof (OhlcvOpenInterestData) ||
-				data.First().GetType() != typeof (YahooData) ||
-				data.First().GetType() != typeof (BudapestseData) ||
-				data.First().GetType() != typeof (SgxData))
+			var list = new List<IOhlc>();
+
+			try
+			{
+				list.AddRange(data.Cast<IOhlc>());
+			}
+			catch (Exception ex)
 			{
 				throw new IndicatorException("Cannot calculate indicator for current datasource");
-			}
-			else
-			{
-				
 			}
 
 			try
@@ -61,15 +56,13 @@ namespace FinancialCharting.Library.TALib
 						//	break;
 
 					case IndicatorType.SMA:
-						//var dates = data.Select(x => x.Date).ToList();
-						//var closes = data.Select(x => x.Close).ToList();
-						//return CalculateSma(dates, closes, parameters);
+						return CalculateSma(list.Select(x => x.Date).ToList(), list.Select(x => x.Close).ToList(), parameters);
 
 					case IndicatorType.EMA:
-						//return CalculateEma(data, parameters);
+						return CalculateEma(list.Select(x => x.Date).ToList(), list.Select(x => x.Close).ToList(), parameters);
 
 					case IndicatorType.WMA:
-						//return CalculateWma(data, parameters);
+						return CalculateWma(list.Select(x => x.Date).ToList(), list.Select(x => x.Close).ToList(), parameters);
 
 					case IndicatorType.STOCH:
 						//	list.AddRange(CalculateStoch(data, parameters));

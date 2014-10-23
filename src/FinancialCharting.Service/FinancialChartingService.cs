@@ -66,7 +66,12 @@ namespace FinancialCharting.Service
 			}
 			catch (Exception ex)
 			{
-				response.ResponseStatus.Message = ex.Message;
+				var status = new ResponseStatus();
+				status.Message = ex.Message;
+				status.ErrorCode = ex.Source;
+				status.StackTrace = ex.StackTrace;
+
+				response.ResponseStatus = status;
 			}
 
 			return response;
@@ -99,7 +104,12 @@ namespace FinancialCharting.Service
 			}
 			catch (Exception ex)
 			{
-				response.ResponseStatus.Message = ex.Message;
+				var status = new ResponseStatus();
+				status.Message = ex.Message;
+				status.ErrorCode = ex.Source;
+				status.StackTrace = ex.StackTrace;
+
+				response.ResponseStatus = status;
 			}
 
 			return response;
@@ -156,7 +166,12 @@ namespace FinancialCharting.Service
 			}
 			catch (Exception ex)
 			{
-				response.ResponseStatus.Message = ex.Message;
+				var status = new ResponseStatus();
+				status.Message = ex.Message;
+				status.ErrorCode = ex.Source;
+				status.StackTrace = ex.StackTrace;
+
+				response.ResponseStatus = status;
 			}
 
 			return response;
@@ -231,7 +246,12 @@ namespace FinancialCharting.Service
 			}
 			catch (Exception ex)
 			{
-				response.ResponseStatus = new ResponseStatus(string.Empty, ex.Message);
+				var status = new ResponseStatus();
+				status.Message = ex.Message;
+				status.ErrorCode = ex.Source;
+				status.StackTrace = ex.StackTrace;
+
+				response.ResponseStatus = status;
 			}
 
 			return response;
@@ -256,7 +276,12 @@ namespace FinancialCharting.Service
 			}
 			catch (Exception ex)
 			{
-				response.ResponseStatus.Message = ex.Message;
+				var status = new ResponseStatus();
+				status.Message = ex.Message;
+				status.ErrorCode = ex.Source;
+				status.StackTrace = ex.StackTrace;
+
+				response.ResponseStatus = status;
 			}
 
 			return response;
@@ -316,7 +341,12 @@ namespace FinancialCharting.Service
 			}
 			catch (Exception ex)
 			{
-				response.ResponseStatus.Message = ex.Message;
+				var status = new ResponseStatus();
+				status.Message = ex.Message;
+				status.ErrorCode = ex.Source;
+				status.StackTrace = ex.StackTrace;
+
+				response.ResponseStatus = status;
 			}
 
 			return response;
