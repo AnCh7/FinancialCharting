@@ -73,6 +73,7 @@
     <Content Include="libs\extjs\resources\ext-theme-classic\Readme.md" />
     <Content Include="libs\extjs\resources\ext-theme-gray\Readme.md" />
     <Content Include="libs\extjs\resources\ext-theme-neptune\Readme.md" />
+    <None Include="Properties\PublishProfiles\FileDeploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
