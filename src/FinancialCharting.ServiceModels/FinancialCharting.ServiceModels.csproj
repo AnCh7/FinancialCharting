@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GetSupportedIndicators.cs" />
-    <Compile Include="LoadAllFinancialDataSources.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GetFinancialDataSources.cs" />
     <Compile Include="GetMarketData.cs" />

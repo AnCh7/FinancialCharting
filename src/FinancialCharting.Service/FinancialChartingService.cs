@@ -8,6 +8,7 @@ using System.Linq;
 using Autofac;
 
 using FinancialCharting.Library.Enum;
+using FinancialCharting.Library.Models;
 using FinancialCharting.Library.Models.Common;
 using FinancialCharting.Library.Models.Indicator;
 using FinancialCharting.Library.Quandl;
@@ -39,44 +40,6 @@ namespace FinancialCharting.Service
 			_technicalIndicatorsProvider = DependencyContainer.Instance.Resolve<TechnicalIndicatorsManager>();
 		}
 
-		public object Get(LoadAllFinancialDataSources request)
-		{
-			var response = new GetFinancialDataSourcesResponse();
-
-			try
-			{
-				const string key = "AllFinancialDataSources";
-				var cached = _cachingManager.GetAllFinancialDataSources(key);
-				if (cached != null)
-				{
-					return cached;
-				}
-
-				var result = _dataProvider.GetAllFinancialDataSources();
-				if (result.Success)
-				{
-					response.Success = true;
-					response.Data = result.Data;
-					_cachingManager.Save(key, response);
-				}
-				else
-				{
-					response.ResponseStatus.Message = result.ErrorMessage;
-				}
-			}
-			catch (Exception ex)
-			{
-				var status = new ResponseStatus();
-				status.Message = ex.Message;
-				status.ErrorCode = ex.Source;
-				status.StackTrace = ex.StackTrace;
-
-				response.ResponseStatus = status;
-			}
-
-			return response;
-		}
-
 		public object Get(GetFinancialDataSources request)
 		{
 			var response = new GetFinancialDataSourcesResponse();
@@ -90,7 +53,16 @@ namespace FinancialCharting.Service
 					return cached;
 				}
 
-				var result = _dataProvider.GetFinancialDataSources();
+				OperationResult<List<DataSource>> result;
+				if (Request.PathInfo.EndsWith("all"))
+				{
+					result = _dataProvider.GetAllFinancialDataSources();
+				}
+				else
+				{
+					result = _dataProvider.GetFinancialDataSources();
+				}
+
 				if (result.Success)
 				{
 					response.Success = true;

@@ -1,11 +1,10 @@
 ﻿#region Usings
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-using ServiceStack.Text;
+using FinancialCharting.Library.ProjectExceptions;
 
 #endregion
 
@@ -21,19 +20,16 @@ namespace FinancialCharting.Library.Models.Indicator
 
 			if (datetime.Count == indicator.Count)
 			{
-				var arrayList = new ArrayList();
+				IndicatorData = new Dictionary<DateTime, double>();
 
 				for (var i = 0; i < datetime.Count; i++)
 				{
-					var item = new {Date = datetime[i], Value = indicator[i]};
-					arrayList.Add(item);
+					IndicatorData.Add(datetime[i], indicator[i]);
 				}
-
-				IndicatorData = arrayList.ToJson();
 			}
 			else
 			{
-				throw new NotSupportedException();
+				throw new IndicatorException("This indicator type is not supported");
 			}
 		}
 
@@ -44,6 +40,6 @@ namespace FinancialCharting.Library.Models.Indicator
 		public string Type { get; protected set; }
 
 		[DataMember(Name = "indicatorData")]
-		public string IndicatorData { get; protected set; }
+		public Dictionary<DateTime, double> IndicatorData { get; protected set; }
 	}
 }

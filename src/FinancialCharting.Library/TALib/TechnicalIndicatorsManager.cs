@@ -39,7 +39,7 @@ namespace FinancialCharting.Library.TALib
 			}
 			catch (Exception ex)
 			{
-				throw new IndicatorException("Cannot calculate indicator for current datasource");
+				throw new IndicatorException("Cannot calculate indicator for current datasource", ex);
 			}
 
 			try
@@ -47,13 +47,10 @@ namespace FinancialCharting.Library.TALib
 				switch (parameters.Type)
 				{
 					case IndicatorType.BBANDS:
-						//var dates = data.Cast < DateClose(x => x.Date).ToList();
-						//var closes = data.Cast < DateClose(x => x.Value).ToList();
-						//return CalculateBbands(dates, closes, parameters);
+						return CalculateBbands(list.Select(x => x.Date).ToList(), list.Select(x => x.Close).ToList(), parameters);
 
 					case IndicatorType.RSI:
-						//	list.AddRange(CalculateRsi(data, parameters));
-						//	break;
+						return CalculateRsi(list.Select(x => x.Date).ToList(), list.Select(x => x.Close).ToList(), parameters);
 
 					case IndicatorType.SMA:
 						return CalculateSma(list.Select(x => x.Date).ToList(), list.Select(x => x.Close).ToList(), parameters);
@@ -65,36 +62,46 @@ namespace FinancialCharting.Library.TALib
 						return CalculateWma(list.Select(x => x.Date).ToList(), list.Select(x => x.Close).ToList(), parameters);
 
 					case IndicatorType.STOCH:
-						//	list.AddRange(CalculateStoch(data, parameters));
-						//	break;
+						return CalculateStoch(list.Select(x => x.Date).ToList(),
+											  list.Select(x => x.High).ToList(),
+											  list.Select(x => x.Low).ToList(),
+											  list.Select(x => x.Close).ToList(),
+											  parameters);
 
 					case IndicatorType.AROON:
-						//	list.AddRange(CalculateAroon(data, parameters));
-						//	break;
+						return CalculateAroon(list.Select(x => x.Date).ToList(),
+											  list.Select(x => x.High).ToList(),
+											  list.Select(x => x.Low).ToList(),
+											  parameters);
 
 					case IndicatorType.AROONOSC:
-						//	list.AddRange(CalculateAroonOsc(data, parameters));
-						//	break;
+						return CalculateAroonOsc(list.Select(x => x.Date).ToList(),
+												 list.Select(x => x.High).ToList(),
+												 list.Select(x => x.Low).ToList(),
+												 parameters);
 
 					case IndicatorType.ADX:
-						//	list.AddRange(CalculateAdx(data, parameters));
-						//	break;
+						return CalculateAdx(list.Select(x => x.Date).ToList(),
+											list.Select(x => x.High).ToList(),
+											list.Select(x => x.Low).ToList(),
+											list.Select(x => x.Close).ToList(),
+											parameters);
 
 					case IndicatorType.MACD:
-						//	list.AddRange(CalculateMacd(data, parameters));
-						//	break;
+						return CalculateMacd(list.Select(x => x.Date).ToList(),
+											 list.Select(x => x.Close).ToList(),
+											 parameters);
 
 					default:
-						throw new ArgumentException("indicatorType");
+						throw new IndicatorException("This indicator type is not supported");
 				}
 			}
-			catch (TALibException ex)
+			catch (IndicatorException ex)
 			{
 				return new OperationResult<List<Indicator>>(false, ex.Message);
 			}
-			catch (Exception ex)
+			catch (TALibException ex)
 			{
-				_logger.Error(ex);
 				return new OperationResult<List<Indicator>>(false, ex.Message);
 			}
 		}

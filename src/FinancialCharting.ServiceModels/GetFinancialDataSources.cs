@@ -12,6 +12,7 @@ using ServiceStack.ServiceHost;
 namespace FinancialCharting.ServiceModels
 {
 	[Route("/financialDataSources", "GET")]
+	[Route("/financialDataSources/all", "GET")]
 	public class GetFinancialDataSources : IReturn<GetFinancialDataSourcesResponse>
 	{}
 

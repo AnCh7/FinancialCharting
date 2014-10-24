@@ -22,13 +22,16 @@ namespace FinancialCharting.Service
 			{
 				EnableFeatures = Feature.All.Remove(Feature.Soap11 | Feature.Soap12),
 				DebugMode = true,
-				AdminAuthSecret = "FinancialChartingService"
+				AdminAuthSecret = "chartz"
 			});
 		}
 
 		public override void Configure(Container container)
 		{
+			//FinancialChartingService/requestlogs?authsecret=chartz
 			Plugins.Add(new RequestLogsFeature());
+
+			//FinancialChartingService/swagger-ui/index.html
 			Plugins.Add(new SwaggerFeature());
 
 			container.Register<ICacheClient>(new MemoryCacheClient());

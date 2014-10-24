@@ -18,12 +18,7 @@ namespace FinancialCharting.Service
 		{
 			_client = client;
 		}
-
-		public GetFinancialDataSourcesResponse GetAllFinancialDataSources(string key)
-		{
-			return _client.Get<GetFinancialDataSourcesResponse>(key);
-		}
-
+	
 		public GetFinancialDataSourcesResponse GetFinancialDataSources(string key)
 		{
 			return _client.Get<GetFinancialDataSourcesResponse>(key);
