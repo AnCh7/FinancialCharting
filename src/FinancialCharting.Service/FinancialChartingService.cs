@@ -11,11 +11,10 @@ using FinancialCharting.Library.Enum;
 using FinancialCharting.Library.Models;
 using FinancialCharting.Library.Models.Common;
 using FinancialCharting.Library.Models.Indicator;
-using FinancialCharting.Library.Quandl;
-using FinancialCharting.Library.Quandl.Interfaces;
-using FinancialCharting.Library.TALib;
+using FinancialCharting.QuandlProvider.Interfaces;
 using FinancialCharting.Service.Resolver;
 using FinancialCharting.ServiceModels;
+using FinancialCharting.TechnicalAnalysisLibrary;
 
 using ServiceStack.ServiceInterface;
 using ServiceStack.ServiceInterface.Cors;
@@ -30,13 +29,13 @@ namespace FinancialCharting.Service
 	public sealed class FinancialChartingService : ServiceStack.ServiceInterface.Service
 	{
 		private readonly CachingManager _cachingManager;
-		private readonly IQuandlProvider _dataProvider;
+		private readonly IQuandlDataProvider _dataProvider;
 		private readonly TechnicalIndicatorsManager _technicalIndicatorsProvider;
 
 		public FinancialChartingService()
 		{
 			_cachingManager = new CachingManager(Cache);
-			_dataProvider = DependencyContainer.Instance.Resolve<IQuandlProvider>();
+			_dataProvider = DependencyContainer.Instance.Resolve<IQuandlDataProvider>();
 			_technicalIndicatorsProvider = DependencyContainer.Instance.Resolve<TechnicalIndicatorsManager>();
 		}
 
@@ -163,29 +162,6 @@ namespace FinancialCharting.Service
 				{
 					throw new ArgumentNullException("request", "[Ticker] field is empty");
 				}
-				if (!request.RowsNumber.HasValue)
-				{
-					if (!request.From.HasValue && !request.To.HasValue)
-					{
-						request.RowsNumber = 300;
-					}
-					else if (!request.From.HasValue)
-					{
-						request.From = request.To.Value.AddYears(-1);
-					}
-					else if (!request.To.HasValue)
-					{
-						request.To = DateTime.Now.Date;
-					}
-				}
-				if (!request.Timeframe.HasValue)
-				{
-					request.Timeframe = TimeframeType.DAILY;
-				}
-				if (!request.Transformation.HasValue)
-				{
-					request.Transformation = TransformationType.NONE;
-				}
 
 				var cache = _cachingManager.GetMarketData(request.ToJson());
 				if (cache != null)
@@ -194,15 +170,7 @@ namespace FinancialCharting.Service
 				}
 				else
 				{
-					var quandlRequest = new QuandlMarketDataRequest(request.DataSource,
-																	request.Ticker,
-																	request.From,
-																	request.To,
-																	request.RowsNumber,
-																	request.Timeframe,
-																	request.Transformation);
-
-					var result = _dataProvider.GetMarketData(quandlRequest);
+					var result = _dataProvider.GetMarketData(request);
 					if (result.Success)
 					{
 						response.Success = true;

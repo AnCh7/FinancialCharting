@@ -13,5 +13,7 @@ namespace FinancialCharting.Library.Logging
 		void Error(Exception exception);
 
 		void Warn(string message);
+
+		void Warn(Exception exception);
 	}
 }

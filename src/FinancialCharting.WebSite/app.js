@@ -12,7 +12,16 @@ Ext.override(Ext.data.proxy.JsonP, {
 		this.addListener("exception", function(proxy, response, operation) {
 			var sb = Ext.getCmp('bottom');
 			sb.setStatus({
-				text: response.responseStatus.Message,
+				text: (function() {
+					if (response != null &&
+						response.responseStatus != null &&
+						response.responseStatus.Message != null) {
+						return response.responseStatus.Message;
+					}
+					else {
+						return "Error";
+					}
+				})(),
 				iconCls: 'x-status-error',
 				clear: {
 					wait: 5000,
@@ -30,12 +39,21 @@ Ext.override(Ext.data.proxy.JsonP, {
 });
 
 Ext.override(Ext.data.reader.Reader, {
-	constructor: function (config) {
+	constructor: function(config) {
 		this.callOverridden([config]);
-		this.addListener("exception", function (proxy, response, operation) {
+		this.addListener("exception", function(proxy, response, operation) {
 			var sb = Ext.getCmp('bottom');
 			sb.setStatus({
-				text: response.responseStatus.Message,
+				text: (function () {
+					if (response != null &&
+						response.responseStatus != null &&
+						response.responseStatus.Message != null) {
+						return response.responseStatus.Message;
+					}
+					else {
+						return "Error";
+					}
+				})(),
 				iconCls: 'x-status-error',
 				clear: {
 					wait: 5000,

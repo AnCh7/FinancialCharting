@@ -38,11 +38,24 @@ function reCreateChart(me, store) {
 
 	var config;
 	switch (me.sourceCode) {
+		case 'NIKKEI':
+			if (me.columns.length == 2) {
+				config = adapter.HighStockConfig.getConfig('DataOneField');
+			}
+			if (me.columns.length == 3) {
+				config = adapter.HighStockConfig.getConfig('DataTwoFields');
+			}
+			if (me.columns.length == 5) {
+				config = adapter.HighStockConfig.getConfig('OhlcData');
+			}
+			if (me.columns.length == 6) {
+				config = adapter.HighStockConfig.getConfig('OhlcvData');
+			}
+			break;
+
 		case 'BCHAIN':
 		case 'EUREKA':
 		case 'ML':
-		case 'NIKKEI':
-		case 'SANDP':
 		case 'RENCAP':
 		case 'WFE':
 		case 'WGC':
@@ -51,22 +64,22 @@ function reCreateChart(me, store) {
 		case 'WSJ':
 		case 'DMDRN':
 		case 'SEC':
-			config = adapter.HighStockConfig.getConfig('SimpleDataOneField');
+			config = adapter.HighStockConfig.getConfig('DataOneField');
 			break;
 
 		case 'QUANDL':
 		case 'PSYCH':
 			if (me.columns.length == 3) {
-				config = adapter.HighStockConfig.getConfig('SimpleDataTwoFields');
+				config = adapter.HighStockConfig.getConfig('DataTwoFields');
 			}
 			if (me.columns.length == 4) {
-				config = adapter.HighStockConfig.getConfig('SimpleDataThreeFields');
+				config = adapter.HighStockConfig.getConfig('DataThreeFields');
 			}
 			break;
 
 		case 'FINRA':
 			if (me.columns.length == 4) {
-				config = adapter.HighStockConfig.getConfig('SimpleDataThreeFields');
+				config = adapter.HighStockConfig.getConfig('DataThreeFields');
 			}
 			break;
 
@@ -80,7 +93,7 @@ function reCreateChart(me, store) {
 
 		case 'ASX':
 			if (me.columns.length == 2) {
-				config = adapter.HighStockConfig.getConfig('SimpleData');
+				config = adapter.HighStockConfig.getConfig('DataOneField');
 			}
 			else {
 				config = adapter.HighStockConfig.getConfig('OhlcvOpenInterestData');
@@ -96,7 +109,7 @@ function reCreateChart(me, store) {
 
 		case 'BUDAPESTSE':
 			if (me.columns.length == 2) {
-				config = adapter.HighStockConfig.getConfig('SimpleData');
+				config = adapter.HighStockConfig.getConfig('DataOneField');
 			}
 			else {
 				config = adapter.HighStockConfig.getConfig('OhlcData');
@@ -118,23 +131,23 @@ function reCreateChart(me, store) {
 
 		default:
 			if (me.columns.length == 2) {
-				config = adapter.HighStockConfig.getConfig('SimpleDataOneField');
+				config = adapter.HighStockConfig.getConfig('DataOneField');
 				break;
 			}
 			if (me.columns.length == 3) {
-				config = adapter.HighStockConfig.getConfig('SimpleDataTwoFields');
+				config = adapter.HighStockConfig.getConfig('DataTwoFields');
 				break;
 			}
 			if (me.columns.length == 4) {
-				config = adapter.HighStockConfig.getConfig('SimpleDataThreeFields');
+				config = adapter.HighStockConfig.getConfig('DataThreeFields');
 				break;
 			}
 			if (me.columns.length == 5) {
-				config = adapter.HighStockConfig.getConfig('SimpleDataFourFields');
+				config = adapter.HighStockConfig.getConfig('DataFourFields');
 				break;
 			}
 			if (me.columns.length == 6) {
-				config = adapter.HighStockConfig.getConfig('SimpleDataFiveFields');
+				config = adapter.HighStockConfig.getConfig('DataFiveFields');
 				break;
 			}
 	}

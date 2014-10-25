@@ -13,7 +13,7 @@ using ServiceStack.Text;
 namespace FinancialCharting.Library.Models.MarketData.Common
 {
 	[DataContract]
-	public class DateComponent
+	public class DateComponent : IMarketData
 	{
 		public DateComponent(List<object> data)
 		{
@@ -23,7 +23,7 @@ namespace FinancialCharting.Library.Models.MarketData.Common
 		[DataMember(Name = "date", Order = 0)]
 		public DateTime Date { get; set; }
 
-		[DataMember(Name = "date_unix")]
+		[DataMember(Name = "date_unix", Order = 1)]
 		public long UnixTimeMs
 		{
 			get { return Date.ToUnixTimeMs(); }

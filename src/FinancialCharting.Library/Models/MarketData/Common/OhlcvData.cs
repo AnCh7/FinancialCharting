@@ -17,7 +17,7 @@ namespace FinancialCharting.Library.Models.MarketData.Common
 			Volume = Convert.ToDouble(data[5]);
 		}
 
-		[DataMember(Name = "volume", Order = 5)]
+		[DataMember(Name = "volume", Order = 6)]
 		public double Volume { get; set; }
 	}
 }

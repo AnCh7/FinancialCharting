@@ -19,17 +19,15 @@ namespace FinancialCharting.Library.Configuration
 		{
 			new DataSource {Name = "Google Finance", Count = 43000, Description = "US equities", Code = "GOOG"},
 			new DataSource {Name = "Block Chain", Count = 30, Description = "Bitcoin data", Code = "BCHAIN"},
-			new DataSource {Name = "Eurekahedge", Count = 250, Description = "Hedge fund performance data", Code = "EUREKA"},
-			new DataSource {Name = "Merrill Lynch", Count = 25, Description = "US bonds and equities", Code = "ML"},
+			new DataSource {Name = "Yahoo Finance", Count = 95000, Description = "US mutual funds and ETFs, global indexes", Code = "YAHOO"},
+			new DataSource {Name = "Quandl", Count = 2500, Description = "Exchange rates", Code = "QUANDL"},
 			new DataSource {Name = "Nikkei Group", Count = 15, Description = "Daily indexes published by the Nikkei group.", Code = "NIKKEI"},
-			new DataSource {Name = "Standard and Poor's", Count = 450, Description = "Housing and equity indexes including Case-Shiller", Code = "SANDP"},
 			new DataSource {Name = "Renaissance Capital", Count = 5, Description = "Monthly US IPO statistics.", Code = "RENCAP"},
 			new DataSource {Name = "World Federation of Exchanges", Count = 250, Description = "Comparative market statistics for exchanges around the world", Code = "WFE"},
 			new DataSource {Name = "World Gold Council", Count = 200, Description = "Gold prices", Code = "WGC"},
 			new DataSource {Name = "Wren Research", Count = 15, Description = "Australian stock performance", Code = "WREN"},
 			new DataSource {Name = "Stock Exchange of Thailand", Count = 5, Description = "Thai market Indexes", Code = "THAISE"},
 			new DataSource {Name = "Wall Street Journal", Count = 120, Description = "Commodity spot prices", Code = "WSJ"},
-			new DataSource {Name = "Quandl", Count = 2500, Description = "Exchange rates", Code = "QUANDL"},
 			new DataSource {Name = "Philippine Stock Exchange", Count = 10, Description = "Filipino stock exchange", Code = "PHILSE"},
 			new DataSource {Name = "Australian Securities Exchange", Count = 350, Description = "Australian and New Zealand equity, rate and commodity futures", Code = "ASX"},
 			new DataSource {Name = "Eurex", Count = 1200, Description = "Schatz, Bobl, Bund, Buxl, BTP, OAT, DAX, Stoxx, equity and commodity futures.", Code = "EUREX"},
@@ -38,9 +36,11 @@ namespace FinancialCharting.Library.Configuration
 			new DataSource {Name = "Price-Data.com", Count = 1700, Description = "Delisted futures contracts including HU, PB, DM, FR, CR, KV.", Code = "PXDATA"},
 			new DataSource {Name = "Budapest Stock Exchange", Count = 5, Description = "Hungarian stock exchange", Code = "BUDAPESTSE"},
 			new DataSource {Name = "Singapore Exchange", Count = 800, Description = "Contracts including equities, commodites, forex and rates", Code = "SGX"},
-			new DataSource {Name = "Yahoo Finance", Count = 95000, Description = "US mutual funds and ETFs, global indexes", Code = "YAHOO"}
+			new DataSource {Name = "Eurekahedge", Count = 250, Description = "Hedge fund performance data", Code = "EUREKA"},
+			new DataSource {Name = "Merrill Lynch", Count = 25, Description = "US bonds and equities", Code = "ML"}
 
 			// Not implemented
+			//new DataSource {Name = "Standard and Poor's", Count = 450, Description = "Housing and equity indexes including Case-Shiller", Code = "SANDP"},
 			//new DataSource {Name = "Open Financial Data Project", Count = 18000, Description = "Futures (CME, ICE, CFTC), indexes (WSJ), financial ratios (Damodaran) and more", Code = "OFDP"},
 			//new DataSource {Name = "PsychSignal", Count = 14000, Description = "Bullish/bearish sentiment index and sentiment volume ratios for thousands of stocks.", Code = "PSYCH"},
 			//new DataSource {Name = "NASDAQ OMX", Count = 41500, Description = "Data for NASDAQ OMX indices", Code = "NASDAQ"},

@@ -58,10 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\controller\ChartOptionsController.js" />
-    <Content Include="app\model\Indicator.js" />
     <Content Include="app\model\TimeFrame.js" />
     <Content Include="app\model\Transformation.js" />
-    <Content Include="app\store\IndicatorStore.js" />
     <Content Include="app\store\SearchTickersStore.js" />
     <Content Include="app\store\TimeFrameStore.js" />
     <Content Include="app\store\TransformationStore.js" />

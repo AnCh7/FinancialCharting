@@ -33,14 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
-    </Reference>
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.3.1.0.0\lib\net45\NLog.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\packages\ServiceStack.Common.3.9.71\lib\net35\ServiceStack.Common.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Text">
       <HintPath>..\packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
@@ -53,12 +50,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TA-Lib-Core">
-      <HintPath>..\packages\TA-Lib.0.5.0.3\lib\TA-Lib-Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enum\IndicatorSourceType.cs" />
     <Compile Include="Enum\IndicatorType.cs" />
     <Compile Include="Logging\ILogWrapper.cs" />
     <Compile Include="Logging\LogWrapper.cs" />
@@ -69,39 +62,40 @@
     <Compile Include="Models\DataSet.cs" />
     <Compile Include="Models\DataSource.cs" />
     <Compile Include="Models\Indicator\IndicatorsParameters.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\NikkeiData.cs" />
     <Compile Include="Models\MarketData\Interfaces\IMarketData.cs" />
     <Compile Include="Models\MarketData\Interfaces\IOhlc.cs" />
-    <Compile Include="Models\MarketData\Common\SimpleDataFiveFields.cs" />
-    <Compile Include="Models\MarketData\Common\SimpleDataFourFields.cs" />
-    <Compile Include="Models\MarketData\Common\SimpleDataTwoFields.cs" />
+    <Compile Include="Models\MarketData\Common\DataFiveFields.cs" />
+    <Compile Include="Models\MarketData\Common\DataFourFields.cs" />
+    <Compile Include="Models\MarketData\Common\DataTwoFields.cs" />
     <Compile Include="Models\MarketData\Custom\BudapestseData.cs" />
     <Compile Include="Models\MarketData\Common\DateComponent.cs" />
     <Compile Include="Models\MarketData\Common\OhlcData.cs" />
     <Compile Include="Models\MarketData\Common\OhlcvData.cs" />
     <Compile Include="Models\MarketData\Common\OhlcvOpenInterestData.cs" />
-    <Compile Include="Models\MarketData\Common\SimpleDataThreeFields.cs" />
-    <Compile Include="Models\MarketData\Common\SimpleDataOneField.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\ABMI.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\AMMANSE.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\BARB.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\BITCOIN.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\CBOE.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\ICE.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\MONEYTREE.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\MX.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\MYX.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\NASDAQOMX.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\NSE.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\NYX.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\ODE.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\OFDP.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\OSE.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\PUP.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\SHFE.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\SIX.cs" />
-    <Compile Include="Models\MarketData\NotImplemented\UIS.cs" />
+    <Compile Include="Models\MarketData\Common\DataThreeFields.cs" />
+    <Compile Include="Models\MarketData\Common\DataOneField.cs" />
     <Compile Include="Models\MarketData\Custom\SgxData.cs" />
     <Compile Include="Models\MarketData\Custom\YahooData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\AbmiData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\AmmanseData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\BarbData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\BitcoinData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\CboeData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\IceData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\MoneyTreeData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\MxData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\MyxData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\NasdaqomxData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\NseData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\NyxData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\OdeData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\OfdpData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\OseData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\PupData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\ShfeData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\SixData.cs" />
+    <Compile Include="Models\MarketData\NotImplemented\UisData.cs" />
     <Compile Include="Models\Ticker.cs" />
     <Compile Include="ProjectExceptions\ParsingException.cs" />
     <Compile Include="ProjectExceptions\QuandlProviderException.cs" />
@@ -112,27 +106,20 @@
     <Compile Include="Enum\SortOrderType.cs" />
     <Compile Include="Enum\TimeframeType.cs" />
     <Compile Include="Enum\TransformationType.cs" />
-    <Compile Include="Quandl\Interfaces\IQuandlProvider.cs" />
-    <Compile Include="Quandl\Interfaces\IQuandlMapper.cs" />
-    <Compile Include="Quandl\QuandlMapper.cs" />
     <Compile Include="Models\QuandlJsonModels\Doc.cs" />
     <Compile Include="Models\QuandlJsonModels\Errors.cs" />
     <Compile Include="Models\QuandlJsonModels\RootObjectDataSet.cs" />
     <Compile Include="Models\QuandlJsonModels\RootObjectMarketData.cs" />
     <Compile Include="Models\QuandlJsonModels\Source.cs" />
     <Compile Include="Models\QuandlJsonModels\Spellcheck.cs" />
-    <Compile Include="Quandl\QuandlProvider.cs" />
-    <Compile Include="Quandl\QuandlMarketDataRequest.cs" />
     <Compile Include="Models\Indicator\Indicator.cs" />
     <Compile Include="Models\Indicator\IndicatorParametersFactory.cs" />
     <Compile Include="Models\Indicator\IndicatorSeries.cs" />
-    <Compile Include="TALib\Interfaces\ITALibProvider.cs" />
-    <Compile Include="TALib\TALibProvider.cs" />
-    <Compile Include="TALib\TechnicalIndicatorsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

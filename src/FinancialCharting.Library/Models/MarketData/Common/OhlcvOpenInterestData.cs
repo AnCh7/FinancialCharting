@@ -21,7 +21,7 @@ namespace FinancialCharting.Library.Models.MarketData.Common
 			OpenInterest = Convert.ToDouble(data[6]);
 		}
 
-		[DataMember(Name = "openInterest", Order = 6)]
+		[DataMember(Name = "openInterest", Order = 7)]
 		public double OpenInterest { get; set; }
 	}
 }

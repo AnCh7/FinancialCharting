@@ -13,6 +13,7 @@
 		'low',
 		'open',
 		'close',
+		'close2',
 		'volume',
 		'openInterest',
 		'settle',

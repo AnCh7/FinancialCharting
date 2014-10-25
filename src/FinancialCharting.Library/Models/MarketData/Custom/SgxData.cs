@@ -19,13 +19,13 @@ namespace FinancialCharting.Library.Models.MarketData.Custom
 			Settle = Convert.ToDouble(data[5]);
 		}
 
-		[DataMember(Name = "settle", Order = 5)]
+		[DataMember(Name = "settle", Order = 6)]
 		public double Settle { get; set; }
 
-		[DataMember(Name = "volume", Order = 6)]
+		[DataMember(Name = "volume", Order = 7)]
 		public new double Volume { get; set; }
 
-		[DataMember(Name = "openInterest", Order = 7)]
+		[DataMember(Name = "openInterest", Order = 8)]
 		public new double OpenInterest { get; set; }
 	}
 }

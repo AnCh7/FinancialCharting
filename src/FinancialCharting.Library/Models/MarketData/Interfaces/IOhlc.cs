@@ -1,17 +1,7 @@
-#region Usings
-
-using System;
-
-#endregion
-
 namespace FinancialCharting.Library.Models.MarketData.Interfaces
 {
-	public interface IOhlc
+	public interface IOhlc : IMarketData
 	{
-		DateTime Date { get; set; }
-
-		long UnixTimeMs { get; }
-
 		double Open { get; set; }
 
 		double High { get; set; }

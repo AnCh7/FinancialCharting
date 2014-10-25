@@ -34,5 +34,10 @@ namespace FinancialCharting.Library.Logging
 		{
 			_log.Warn(message);
 		}
+
+		public void Warn(Exception exception)
+		{
+			_log.Warn(exception);
+		}
 	}
 }

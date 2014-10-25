@@ -25,7 +25,7 @@ namespace FinancialCharting.Library.Models
 		[DataMember(Name = "updated_at")]
 		public string UpdatedAt { get; set; }
 
-		[DataMember(Name = "frequency")]
+		[DataMember(Name = "timeframe")]
 		public string TimeFrame { get; set; }
 
 		[DataMember(Name = "from_date")]

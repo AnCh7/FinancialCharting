@@ -19,7 +19,7 @@ namespace FinancialCharting.Library.Models.MarketData.Custom
 			AdjustedClose = Convert.ToDouble(data[6]);
 		}
 
-		[DataMember(Name = "adjustedClose", Order = 6)]
+		[DataMember(Name = "adjustedClose", Order = 7)]
 		public double AdjustedClose { get; set; }
 	}
 }

@@ -5,10 +5,10 @@ using System;
 using Autofac;
 
 using FinancialCharting.Library.Logging;
-using FinancialCharting.Library.Quandl;
-using FinancialCharting.Library.Quandl.Interfaces;
-using FinancialCharting.Library.TALib;
-using FinancialCharting.Library.TALib.Interfaces;
+using FinancialCharting.QuandlProvider;
+using FinancialCharting.QuandlProvider.Interfaces;
+using FinancialCharting.TechnicalAnalysisLibrary;
+using FinancialCharting.TechnicalAnalysisLibrary.Interfaces;
 
 #endregion
 
@@ -32,7 +32,7 @@ namespace FinancialCharting.Service.Resolver
 							var builder = new ContainerBuilder();
 							builder.RegisterType<LogWrapper>().As<ILogWrapper>().SingleInstance();
 							builder.RegisterType<QuandlMapper>().As<IQuandlMapper>().SingleInstance();
-							builder.RegisterType<QuandlProvider>().As<IQuandlProvider>().SingleInstance();
+							builder.RegisterType<QuandlDataProvider>().As<IQuandlDataProvider>().SingleInstance();
 							builder.RegisterType<TALibProvider>().As<ITALibProvider>().SingleInstance();
 							builder.RegisterType<TechnicalIndicatorsManager>().As<TechnicalIndicatorsManager>().SingleInstance();
 							_instance = builder.Build();

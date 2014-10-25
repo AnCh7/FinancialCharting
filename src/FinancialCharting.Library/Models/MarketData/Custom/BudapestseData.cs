@@ -22,16 +22,16 @@ namespace FinancialCharting.Library.Models.MarketData.Custom
 			Low = Convert.ToDouble(data[4]);
 		}
 
-		[DataMember(Name = "open", Order = 1)]
+		[DataMember(Name = "open", Order = 2)]
 		public new double Open { get; set; }
 
-		[DataMember(Name = "high", Order = 2)]
+		[DataMember(Name = "high", Order = 3)]
 		public new double High { get; set; }
 
-		[DataMember(Name = "low", Order = 3)]
+		[DataMember(Name = "low", Order = 4)]
 		public new double Low { get; set; }
 
-		[DataMember(Name = "close", Order = 4)]
+		[DataMember(Name = "close", Order = 5)]
 		public new double Close { get; set; }
 	}
 }

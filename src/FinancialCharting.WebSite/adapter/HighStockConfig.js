@@ -5,7 +5,7 @@ Ext.define("adapter.HighStockConfig", {
 				return Ext.clone(adapter.HighStockConfig[name]);
 			}
 		},
-		SimpleDataOneField: {
+		DataOneField: {
 			series: [
 				{
 					plot: 'spline',
@@ -41,7 +41,7 @@ Ext.define("adapter.HighStockConfig", {
 				],
 			}
 		},
-		SimpleDataTwoFields: {
+		DataTwoFields: {
 			series: [
 				{
 					plot: 'spline',
@@ -98,7 +98,7 @@ Ext.define("adapter.HighStockConfig", {
 				]
 			}
 		},
-		SimpleDataThreeFields: {
+		DataThreeFields: {
 			series: [
 				{
 					plot: 'spline',
@@ -176,7 +176,7 @@ Ext.define("adapter.HighStockConfig", {
 				]
 			}
 		},
-		SimpleDataFourFields: {
+		DataFourFields: {
 			series: [
 				{
 					plot: 'spline',
@@ -275,7 +275,7 @@ Ext.define("adapter.HighStockConfig", {
 				]
 			}
 		},
-		SimpleDataFiveFields: {
+		DataFiveFields: {
 			series: [
 				{
 					plot: 'spline',

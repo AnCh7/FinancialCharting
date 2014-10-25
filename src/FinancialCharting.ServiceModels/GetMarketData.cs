@@ -37,6 +37,15 @@ namespace FinancialCharting.ServiceModels
 
 		[ApiMember(Name = "Transformation", ParameterType = "query", DataType = "complex", IsRequired = false)]
 		public TransformationType? Transformation { get; set; }
+
+		[ApiMember(Name = "SortOrder", ParameterType = "query", DataType = "complex", IsRequired = false)]
+		public SortOrderType? SortOrder { get; set; }
+
+		[ApiMember(Name = "ExcludeHeaders", ParameterType = "query", DataType = "boolean", IsRequired = false)]
+		public bool? ExcludeHeaders { get; set; }
+
+		[ApiMember(Name = "SpecificColumnNumber", ParameterType = "query", DataType = "int", IsRequired = false)]
+		public int? SpecificColumnNumber { get; set; }
 	}
 
 	[DataContract]

@@ -6,7 +6,7 @@
 		'name',
 		'description',
 		'updated_at',
-		'frequency',
+		'timeframe',
 		'from_date',
 		'to_date',
 		'columns'

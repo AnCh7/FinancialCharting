@@ -141,9 +141,17 @@
       <Project>{9d2570b0-7c68-4144-8509-793a7d42144c}</Project>
       <Name>FinancialCharting.Library</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FinancialCharting.QuandlProvider\FinancialCharting.QuandlProvider.csproj">
+      <Project>{5781E982-2CCC-474E-B2D4-BD385092AFDA}</Project>
+      <Name>FinancialCharting.QuandlProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FinancialCharting.ServiceModels\FinancialCharting.ServiceModels.csproj">
       <Project>{CC857547-BA79-49BE-885B-D2947A4DF083}</Project>
       <Name>FinancialCharting.ServiceModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FinancialCharting.TechnicalAnalysisLibrary\FinancialCharting.TechnicalAnalysisLibrary.csproj">
+      <Project>{F2C1A505-6627-4B66-BE45-04CAF2121E1D}</Project>
+      <Name>FinancialCharting.TechnicalAnalysisLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
