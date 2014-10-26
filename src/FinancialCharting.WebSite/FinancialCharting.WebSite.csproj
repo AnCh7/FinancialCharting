@@ -57,6 +57,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="common\ErrorHandlingJsonP.js" />
+    <Content Include="common\ErrorHandlingReader.js" />
     <Content Include="app\controller\ChartOptionsController.js" />
     <Content Include="app\model\TimeFrame.js" />
     <Content Include="app\model\Transformation.js" />
@@ -3169,6 +3171,9 @@
     <Content Include="libs\hs\themes\sand-signika.js" />
     <Content Include="libs\hs\themes\skies.js" />
     <Content Include="libs\jquery\jquery-2.1.1.js" />
+    <Content Include="override\Connection.js" />
+    <Content Include="override\Server.js" />
+    <Content Include="override\JsonP.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -13,7 +13,6 @@ namespace FinancialCharting.Library.Models.MarketData.Common
 	/// BCHAIN ["Date","Value"]
 	/// EUREKA ["Date","Returns"]
 	/// ML ["Date","Value"]
-	/// NIKKEI ["Date","Close"]
 	/// RENCAP ["Date","Value"]
 	/// WFE ["Year","Million USD"]
 	/// WGC ["Date","Value"]

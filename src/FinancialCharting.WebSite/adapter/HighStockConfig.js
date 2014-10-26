@@ -8,16 +8,20 @@ Ext.define("adapter.HighStockConfig", {
 		DataOneField: {
 			series: [
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
+						debugger;
 						result.push(record.data.date_unix);
-						if (record.data.value == null || record.data.value == 0) {
-							result.push(null);
-						}
-						else {
+						if (typeof record.data.value != 'undefined' && record.data.value != '') {
 							result.push(record.data.value);
 						}
+						else {
+							result.push(null);
+						}
+
 						return result;
 					}
 				}
@@ -31,10 +35,8 @@ Ext.define("adapter.HighStockConfig", {
 				rangeSelector: {
 					selected: 5
 				},
-				title: { text: '' },
 				yAxis: [
 					{
-						title: { text: '' },
 						height: '100%',
 						lineWidth: 2
 					}
@@ -44,29 +46,33 @@ Ext.define("adapter.HighStockConfig", {
 		DataTwoFields: {
 			series: [
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value == null || record.data.value == 0) {
-							result.push(0);
+						if (typeof record.data.value != 'undefined' && record.data.value != '') {
+							result.push(record.data.value);
 						}
 						else {
-							result.push(record.data.value);
+							result.push(null);
 						}
 						return result;
 					}
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value2 == null || record.data.value2 == 0) {
-							result.push(0);
+						if (typeof record.data.value2 != 'undefined' && record.data.value2 != '') {
+							result.push(record.data.value2);
 						}
 						else {
-							result.push(record.data.value2);
+							result.push(null);
 						}
 						return result;
 					},
@@ -82,15 +88,12 @@ Ext.define("adapter.HighStockConfig", {
 				rangeSelector: {
 					selected: 5
 				},
-				title: { text: '' },
 				yAxis: [
 					{
-						title: { text: '' },
 						height: '50%',
 						lineWidth: 2
 					},
 					{
-						title: { text: '' },
 						top: '50%',
 						height: '50%',
 						lineWidth: 1
@@ -101,44 +104,50 @@ Ext.define("adapter.HighStockConfig", {
 		DataThreeFields: {
 			series: [
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value == null || record.data.value == 0) {
-							result.push(0);
+						if (typeof record.data.value != 'undefined' && record.data.value != '') {
+							result.push(record.data.value);
 						}
 						else {
-							result.push(record.data.value);
+							result.push(null);
 						}
 						return result;
 					}
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value2 == null || record.data.value2 == 0) {
-							result.push(0);
+						if (typeof record.data.value2 != 'undefined' && record.data.value2 != '') {
+							result.push(record.data.value2);
 						}
 						else {
-							result.push(record.data.value2);
+							result.push(null);
 						}
 						return result;
 					},
 					yAxis: 1
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value3 == null || record.data.value3 == 0) {
-							result.push(0);
+						if (typeof record.data.value3 != 'undefined' && record.data.value3 != '') {
+							result.push(record.data.value3);
 						}
 						else {
-							result.push(record.data.value3);
+							result.push(null);
 						}
 						return result;
 					},
@@ -154,21 +163,17 @@ Ext.define("adapter.HighStockConfig", {
 				rangeSelector: {
 					selected: 5
 				},
-				title: { text: '' },
 				yAxis: [
 					{
-						title: { text: '' },
 						height: '50%',
 						lineWidth: 2
 					},
 					{
-						title: { text: '' },
 						top: '50%',
 						height: '25%',
 						lineWidth: 1
 					},
 					{
-						title: { text: '' },
 						top: '75%',
 						height: '25%',
 						lineWidth: 1
@@ -179,59 +184,67 @@ Ext.define("adapter.HighStockConfig", {
 		DataFourFields: {
 			series: [
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value == null || record.data.value == 0) {
-							result.push(0);
+						if (typeof record.data.value != 'undefined' && record.data.value != '') {
+							result.push(record.data.value);
 						}
 						else {
-							result.push(record.data.value);
+							result.push(null);
 						}
 						return result;
 					}
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value2 == null || record.data.value2 == 0) {
-							result.push(0);
+						if (typeof record.data.value2 != 'undefined' && record.data.value2 != '') {
+							result.push(record.data.value2);
 						}
 						else {
-							result.push(record.data.value2);
+							result.push(null);
 						}
 						return result;
 					},
 					yAxis: 1
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value3 == null || record.data.value3 == 0) {
-							result.push(0);
+						if (typeof record.data.value3 != 'undefined' && record.data.value3 != '') {
+							result.push(record.data.value3);
 						}
 						else {
-							result.push(record.data.value3);
+							result.push(null);
 						}
 						return result;
 					},
 					yAxis: 2
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value4 == null || record.data.value4 == 0) {
-							result.push(0);
+						if (typeof record.data.value4 != 'undefined' && record.data.value4 != '') {
+							result.push(record.data.value4);
 						}
 						else {
-							result.push(record.data.value4);
+							result.push(null);
 						}
 						return result;
 					},
@@ -247,27 +260,22 @@ Ext.define("adapter.HighStockConfig", {
 				rangeSelector: {
 					selected: 5
 				},
-				title: { text: '' },
 				yAxis: [
 					{
-						title: { text: '' },
 						height: '25%',
 						lineWidth: 2
 					},
 					{
-						title: { text: '' },
 						top: '25%',
 						height: '25%',
 						lineWidth: 1
 					},
 					{
-						title: { text: '' },
 						top: '50%',
 						height: '25%',
 						lineWidth: 1
 					},
 					{
-						title: { text: '' },
 						top: '75%',
 						height: '25%',
 						lineWidth: 1
@@ -278,74 +286,84 @@ Ext.define("adapter.HighStockConfig", {
 		DataFiveFields: {
 			series: [
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value == null || record.data.value == 0) {
-							result.push(0);
+						if (typeof record.data.value != 'undefined' && record.data.value != '') {
+							result.push(record.data.value);
 						}
 						else {
-							result.push(record.data.value);
+							result.push(null);
 						}
 						return result;
 					}
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value2 == null || record.data.value2 == 0) {
-							result.push(0);
+						if (typeof record.data.value2 != 'undefined' && record.data.value2 != '') {
+							result.push(record.data.value2);
 						}
 						else {
-							result.push(record.data.value2);
+							result.push(null);
 						}
 						return result;
 					},
 					yAxis: 1
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value3 == null || record.data.value3 == 0) {
-							result.push(0);
+						if (typeof record.data.value3 != 'undefined' && record.data.value3 != '') {
+							result.push(record.data.value3);
 						}
 						else {
-							result.push(record.data.value3);
+							result.push(null);
 						}
 						return result;
 					},
 					yAxis: 2
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value4 == null || record.data.value4 == 0) {
-							result.push(0);
+						if (typeof record.data.value4 != 'undefined' && record.data.value4 != '') {
+							result.push(record.data.value4);
 						}
 						else {
-							result.push(record.data.value4);
+							result.push(null);
 						}
 						return result;
 					},
 					yAxis: 3
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'spline',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.value5 == null || record.data.value5 == 0) {
-							result.push(0);
+						if (typeof record.data.value5 != 'undefined' && record.data.value5 != '') {
+							result.push(record.data.value5);
 						}
 						else {
-							result.push(record.data.value5);
+							result.push(null);
 						}
 						return result;
 					},
@@ -361,33 +379,27 @@ Ext.define("adapter.HighStockConfig", {
 				rangeSelector: {
 					selected: 5
 				},
-				title: { text: '' },
 				yAxis: [
 					{
-						title: { text: '' },
 						height: '25%',
-						lineWidth: 2
+						lineWidth: 1
 					},
 					{
-						title: { text: '' },
 						top: '20%',
 						height: '20%',
 						lineWidth: 1
 					},
 					{
-						title: { text: '' },
 						top: '40%',
 						height: '20%',
 						lineWidth: 1
 					},
 					{
-						title: { text: '' },
 						top: '60%',
 						height: '20%',
 						lineWidth: 1
 					},
 					{
-						title: { text: '' },
 						top: '80%',
 						height: '20%',
 						lineWidth: 1
@@ -398,34 +410,27 @@ Ext.define("adapter.HighStockConfig", {
 		OhlcData: {
 			series: [
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'candlestick',
 					name: 'Price',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.open == null || record.data.open == 0) {
-							result.push(null);
-						}
-						else {
+						if (typeof record.data.open != 'undefined' && record.data.open != '' &&
+							typeof record.data.high != 'undefined' && record.data.high != '' &&
+							typeof record.data.low != 'undefined' && record.data.low != '' &&
+							typeof record.data.close != 'undefined' && record.data.close != '') {
 							result.push(record.data.open);
-						}
-						if (record.data.high == null || record.data.high == 0) {
-							result.push(null);
-						}
-						else {
 							result.push(record.data.high);
-						}
-						if (record.data.low == null || record.data.low == 0) {
-							result.push(null);
-						}
-						else {
 							result.push(record.data.low);
-						}
-						if (record.data.close == null || record.data.close == 0) {
-							result.push(null);
+							result.push(record.data.close);
 						}
 						else {
-							result.push(record.data.close);
+							result.push(null);
+							result.push(null);
+							result.push(null);
+							result.push(null);
 						}
 						return result;
 					}
@@ -440,10 +445,8 @@ Ext.define("adapter.HighStockConfig", {
 				rangeSelector: {
 					selected: 5
 				},
-				title: { text: '' },
 				yAxis: [
 					{
-						title: { text: '' },
 						height: '100%',
 						lineWidth: 2
 					}
@@ -453,49 +456,45 @@ Ext.define("adapter.HighStockConfig", {
 		OhlcvData: {
 			series: [
 				{
+					dataGrouping: {enabled: false},
+					connectNulls: true,
 					plot: 'candlestick',
 					name: 'Price',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.open == null || record.data.open == 0) {
-							result.push(null);
-						}
-						else {
+						if (typeof record.data.open != 'undefined' && record.data.open != '' &&
+							typeof record.data.high != 'undefined' && record.data.high != '' &&
+							typeof record.data.low != 'undefined' && record.data.low != '' &&
+							typeof record.data.close != 'undefined' && record.data.close != '') {
 							result.push(record.data.open);
-						}
-						if (record.data.high == null || record.data.high == 0) {
-							result.push(null);
-						}
-						else {
 							result.push(record.data.high);
-						}
-						if (record.data.low == null || record.data.low == 0) {
-							result.push(null);
-						}
-						else {
 							result.push(record.data.low);
-						}
-						if (record.data.close == null || record.data.close == 0) {
-							result.push(null);
-						}
-						else {
 							result.push(record.data.close);
 						}
+						else {
+							result.push(null);
+							result.push(null);
+							result.push(null);
+							result.push(null);
+						}
+
 						return result;
 					}
 				},
 				{
+					dataGrouping: {enabled: false},
+					connectNulls: true,
 					plot: 'column',
 					name: 'Volume',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.volume == null || record.data.volume == 0) {
-							result.push(null);
+						if (typeof record.data.volume != 'undefined' && record.data.volume != '') {
+							result.push(record.data.volume);
 						}
 						else {
-							result.push(record.data.volume);
+							result.push(null);
 						}
 						return result;
 					},
@@ -511,15 +510,12 @@ Ext.define("adapter.HighStockConfig", {
 				rangeSelector: {
 					selected: 5
 				},
-				title: { text: '' },
 				yAxis: [
 					{
-						title: { text: '' },
 						height: '70%',
 						lineWidth: 2
 					},
 					{
-						title: { text: '' },
 						top: '70%',
 						height: '30%',
 						lineWidth: 2
@@ -530,65 +526,62 @@ Ext.define("adapter.HighStockConfig", {
 		OhlcvOpenInterestData: {
 			series: [
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'candlestick',
 					name: 'Price',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.open == null || record.data.open == 0) {
-							result.push(null);
-						}
-						else {
+						if (typeof record.data.open != 'undefined' && record.data.open != '' &&
+							typeof record.data.high != 'undefined' && record.data.high != '' &&
+							typeof record.data.low != 'undefined' && record.data.low != '' &&
+							typeof record.data.close != 'undefined' && record.data.close != '') {
 							result.push(record.data.open);
-						}
-						if (record.data.high == null || record.data.high == 0) {
-							result.push(null);
-						}
-						else {
 							result.push(record.data.high);
-						}
-						if (record.data.low == null || record.data.low == 0) {
-							result.push(null);
-						}
-						else {
 							result.push(record.data.low);
-						}
-						if (record.data.close == null || record.data.close == 0) {
-							result.push(null);
+							result.push(record.data.close);
 						}
 						else {
-							result.push(record.data.close);
+							result.push(null);
+							result.push(null);
+							result.push(null);
+							result.push(null);
 						}
 						return result;
 					}
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'column',
 					name: 'Volume',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.volume == null || record.data.volume == 0) {
-							result.push(null);
+						if (typeof record.data.volume != 'undefined' && record.data.volume != '') {
+							result.push(record.data.volume);
 						}
 						else {
-							result.push(record.data.volume);
+							result.push(null);
 						}
 						return result;
 					},
 					yAxis: 1
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'line',
 					name: 'OpenInterest',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.openInterest == null || record.data.openInterest == 0) {
-							result.push(null);
+						if (typeof record.data.openInterest != 'undefined' && record.data.openInterest != '') {
+							result.push(record.data.openInterest);
 						}
 						else {
-							result.push(record.data.openInterest);
+							result.push(null);
 						}
 						return result;
 					},
@@ -604,21 +597,17 @@ Ext.define("adapter.HighStockConfig", {
 				rangeSelector: {
 					selected: 5
 				},
-				title: { text: '' },
 				yAxis: [
 					{
-						title: { text: '' },
 						height: '50%',
 						lineWidth: 2
 					},
 					{
-						title: { text: '' },
 						top: '50%',
 						height: '25%',
 						lineWidth: 2
 					},
 					{
-						title: { text: '' },
 						top: '75%',
 						height: '25%',
 						lineWidth: 2
@@ -629,81 +618,80 @@ Ext.define("adapter.HighStockConfig", {
 		SGXData: {
 			series: [
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'candlestick',
 					name: 'Price',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.open == null || record.data.open == 0) {
-							result.push(null);
-						}
-						else {
+						if (typeof record.data.open != 'undefined' && record.data.open != '' &&
+							typeof record.data.high != 'undefined' && record.data.high != '' &&
+							typeof record.data.low != 'undefined' && record.data.low != '' &&
+							typeof record.data.close != 'undefined' && record.data.close != '') {
 							result.push(record.data.open);
-						}
-						if (record.data.high == null || record.data.high == 0) {
-							result.push(null);
-						}
-						else {
 							result.push(record.data.high);
-						}
-						if (record.data.low == null || record.data.low == 0) {
-							result.push(null);
-						}
-						else {
 							result.push(record.data.low);
-						}
-						if (record.data.close == null || record.data.close == 0) {
-							result.push(null);
+							result.push(record.data.close);
 						}
 						else {
-							result.push(record.data.close);
+							result.push(null);
+							result.push(null);
+							result.push(null);
+							result.push(null);
 						}
 						return result;
 					}
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'line',
 					name: 'Settle',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.settle == null || record.data.settle == 0) {
-							result.push(null);
+						if (typeof record.data.settle != 'undefined' && record.data.settle != '') {
+							result.push(record.data.settle);
 						}
 						else {
-							result.push(record.data.settle);
+							result.push(null);
 						}
 						return result;
 					},
 					yAxis: 1
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'column',
 					name: 'Volume',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.volume == null || record.data.volume == 0) {
-							result.push(null);
+						if (typeof record.data.volume != 'undefined' && record.data.volume != '') {
+							result.push(record.data.volume);
 						}
 						else {
-							result.push(record.data.volume);
+							result.push(null);
 						}
 						return result;
 					},
 					yAxis: 2
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'line',
 					name: 'OpenInterest',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.openInterest == null || record.data.openInterest == 0) {
-							result.push(null);
+						if (typeof record.data.openInterest != 'undefined' && record.data.openInterest != '') {
+							result.push(record.data.openInterest);
 						}
 						else {
-							result.push(record.data.openInterest);
+							result.push(null);
 						}
 						return result;
 					},
@@ -719,27 +707,22 @@ Ext.define("adapter.HighStockConfig", {
 				rangeSelector: {
 					selected: 5
 				},
-				title: { text: '' },
 				yAxis: [
 					{
-						title: { text: '' },
 						height: '40%',
 						lineWidth: 2
 					},
 					{
-						title: { text: '' },
 						top: '40%',
 						height: '20%',
 						lineWidth: 2
 					},
 					{
-						title: { text: '' },
 						top: '60%',
 						height: '20%',
 						lineWidth: 2
 					},
 					{
-						title: { text: '' },
 						top: '80%',
 						height: '20%',
 						lineWidth: 2
@@ -750,65 +733,62 @@ Ext.define("adapter.HighStockConfig", {
 		YAHOOData: {
 			series: [
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'candlestick',
 					name: 'Price',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.open == null || record.data.open == 0) {
-							result.push(null);
-						}
-						else {
+						if (typeof record.data.open != 'undefined' && record.data.open != '' &&
+							typeof record.data.high != 'undefined' && record.data.high != '' &&
+							typeof record.data.low != 'undefined' && record.data.low != '' &&
+							typeof record.data.close != 'undefined' && record.data.close != '') {
 							result.push(record.data.open);
-						}
-						if (record.data.high == null || record.data.high == 0) {
-							result.push(null);
-						}
-						else {
 							result.push(record.data.high);
-						}
-						if (record.data.low == null || record.data.low == 0) {
-							result.push(null);
-						}
-						else {
 							result.push(record.data.low);
-						}
-						if (record.data.close == null || record.data.close == 0) {
-							result.push(null);
+							result.push(record.data.close);
 						}
 						else {
-							result.push(record.data.close);
+							result.push(null);
+							result.push(null);
+							result.push(null);
+							result.push(null);
 						}
 						return result;
 					}
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'column',
 					name: 'Volume',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.volume == null || record.data.volume == 0) {
-							result.push(null);
+						if (typeof record.data.volume != 'undefined' && record.data.volume != '') {
+							result.push(record.data.volume);
 						}
 						else {
-							result.push(record.data.volume);
+							result.push(null);
 						}
 						return result;
 					},
 					yAxis: 1
 				},
 				{
+					dataGrouping: { enabled: false },
+					connectNulls: true,
 					plot: 'line',
 					name: 'AdjustedClose',
 					getData: function(record) {
 						var result = [];
 						result.push(record.data.date_unix);
-						if (record.data.adjustedClose == null || record.data.adjustedClose == 0) {
-							result.push(null);
+						if (typeof record.data.adjustedClose != 'undefined' && record.data.adjustedClose != '') {
+							result.push(record.data.adjustedClose);
 						}
 						else {
-							result.push(record.data.adjustedClose);
+							result.push(null);
 						}
 						return result;
 					},
@@ -824,21 +804,17 @@ Ext.define("adapter.HighStockConfig", {
 				rangeSelector: {
 					selected: 5
 				},
-				title: { text: '' },
 				yAxis: [
 					{
-						title: { text: '' },
 						height: '60%',
 						lineWidth: 2
 					},
 					{
-						title: { text: '' },
 						top: '60%',
 						height: '20%',
 						lineWidth: 2
 					},
 					{
-						title: { text: '' },
 						top: '80%',
 						height: '20%',
 						lineWidth: 2

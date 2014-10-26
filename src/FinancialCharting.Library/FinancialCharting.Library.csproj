@@ -107,7 +107,6 @@
     <Compile Include="Enum\TimeframeType.cs" />
     <Compile Include="Enum\TransformationType.cs" />
     <Compile Include="Models\QuandlJsonModels\Doc.cs" />
-    <Compile Include="Models\QuandlJsonModels\Errors.cs" />
     <Compile Include="Models\QuandlJsonModels\RootObjectDataSet.cs" />
     <Compile Include="Models\QuandlJsonModels\RootObjectMarketData.cs" />
     <Compile Include="Models\QuandlJsonModels\Source.cs" />

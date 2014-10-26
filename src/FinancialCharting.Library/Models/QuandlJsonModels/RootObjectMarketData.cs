@@ -8,7 +8,7 @@ namespace FinancialCharting.Library.Models.QuandlJsonModels
 {
 	public class RootObjectMarketData
 	{
-		public Errors errors { get; set; }
+		public string error { get; set; }
 		public int id { get; set; }
 		public string source_name { get; set; }
 		public string source_code { get; set; }

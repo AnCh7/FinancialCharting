@@ -1,14 +1,5 @@
-/**
- * @author Joe Kuan
- * @email kuan.joe@gmail.com
- * @version 1.0
- * @date 8 May 2012
- *
- * You are not permitted to remove the author section from this file.
- */
-
 if (!Array.prototype.indexOf) {
-	Array.prototype.indexOf = function(elt /*, from*/) {
+	Array.prototype.indexOf = function(elt) {
 		var len = this.length;
 
 		var from = Number(arguments[1]) || 0;
@@ -26,54 +17,21 @@ if (!Array.prototype.indexOf) {
 	};
 }
 
-var logObj = function(obj, opt) {
-	var msg = '';
-	if (opt && opt.nameOnly) {
-		for (var i in obj) {
-			msg += i + ', ';
-		}
-	}
-	else {
-		for (var i in obj) {
-			msg += i + ': ' + obj[i];
-		}
-		if (Ext.isObject(obj[i])) {
-			logObj(obj[i]);
-		}
-	}
-
-	if (opt && opt.header) {
-		msg = opt.header + ': ' + msg;
-	}
-};
-
 Ext.define("adapter.HighStock", {
 	extend: 'Ext.Component',
 	alias: ['widget.highstock'],
 
-	/**
-   * @cfg {Array} array of store
-   * Set the list of stores for the multiple series.
-   */
+	// @cfg {Array} array of store
+	// Set the list of stores for the multiple series.
 	stores: [],
 
-	/**
-   * @cfg {Object} defaultSerieType
-   * Sets styles for this chart. This contains default styling, so modifying this property will <b>override</b>
-   * the built in styles of the chart. Use {@link #extraStyle} to add customizations to the default styling.
-   */
+	// @cfg {Object} defaultSerieType
+	// Sets styles for this chart. This contains default styling, so modifying this property will <b>override</b>
+	// the built in styles of the chart. Use {@link #extraStyle} to add customizations to the default styling.
 	defaultSerieType: null,
 
-	/**
-   * @cfg {Boolean} resizable
-   * True to allow resizing, false to disable resizing (defaults to true).
-   */
 	resizable: true,
 
-	/**
-   * @cfg {Integer} updateDelay
-   * (defaults to 0)
-   */
 	updateDelay: 0,
 
 	// Create getter and setter function
@@ -88,25 +46,20 @@ Ext.define("adapter.HighStock", {
 		if ((!this.stores || !this.stores.length) && (this.store)) {
 			this.stores = [this.store];
 		}
-
 		// If this.stores is defined, then ignore this.store even is defined
 		if (this.stores.length) {
 			for (var i = 0; i < this.stores.length; i++) {
 				this.stores[i] = Ext.data.StoreManager.lookup(this.stores[i]);
 			}
 		}
-
 		this.callParent(arguments);
 	},
-	/**
-   * Add one or more series to the chart
-   * @param {Array} series An array of series
-   * @param {Boolean} append the serie. Defaults to true
-   */
+	// Add one or more series to the chart
+	// @param {Array} series An array of series
+	// @param {Boolean} append the serie. Defaults to true
 	addSeries: function(series, append) {
 		append = (append == null) ? true : false;
 		var n = new Array(), c = new Array(), cls, serieObject;
-		// Add empty data to the serie or just leave it normal. Bug in HighStocks?
 		for (var i = 0; i < series.length; i++) {
 			var serie = Ext.clone(series[i]);
 			var cls = "adapter.HighStockSerie";
@@ -131,11 +84,8 @@ Ext.define("adapter.HighStock", {
 				this.chart.addSeries(c[i], true);
 			}
 			this.refresh();
-
-			// Set the data in the config.
 		}
 		else {
-
 			if (append) {
 				this.chartConfig.series = this.chartConfig.series ? this.chartConfig.series.concat(c) : c;
 				this.series = this.series ? this.series.concat(n) : n;
@@ -146,9 +96,6 @@ Ext.define("adapter.HighStock", {
 			}
 		}
 	},
-	/**
-   *
-   */
 	removeSerie: function(id, redraw) {
 		redraw = redraw || true;
 		if (this.chart) {
@@ -157,19 +104,12 @@ Ext.define("adapter.HighStock", {
 		}
 		this.series.splice(id, 1);
 	},
-	/**
-   * Remove all series
-   */
 	removeAllSeries: function() {
 		var sc = this.series.length;
 		for (var i = 0; i < sc; i++) {
 			this.removeSerie(0);
 		}
 	},
-	/**
-   * Set the title of the chart
-   * @param {String} title Text to set the subtitle
-   */
 	setTitle: function(title) {
 		if (this.chartConfig.title) {
 			this.chartConfig.title.text = title;
@@ -183,10 +123,6 @@ Ext.define("adapter.HighStock", {
 			this.draw();
 		}
 	},
-	/**
-   * Set the subtitle of the chart
-   * @param {String} title Text to set the subtitle
-   */
 	setSubTitle: function(title) {
 		if (this.chartConfig.subtitle) {
 			this.chartConfig.subtitle.text = title;
@@ -203,12 +139,10 @@ Ext.define("adapter.HighStock", {
 	initEvents: function() {
 	},
 	afterRender: function() {
-
 		if (this.stores) {
 			Ext.each(this.stores, function(store, index) {
 				this.bindSeriesStore(index, store, true);
 			}, this);
-			//this.bindStore(this.store, true);
 		}
 
 		adapter.HighStock.superclass.afterRender.call(this);
@@ -234,28 +168,23 @@ Ext.define("adapter.HighStock", {
 		else {
 			this.series = [];
 		}
-
 		this.initEvents();
 	},
 	onMove: function() {
 	},
 	// Should be only called when there is data
 	draw: function() {
-
 		if (!this.stores) {
 			return;
 		}
-
 		// Don't bother to draw until all the stores have been loaded
 		for (var i = 0; i < this.stores.length; i++) {
 			if (this.stores[i].isLoading()) {
 				return;
 			}
 		}
-
 		try {
 			var seriesCount = this.series.length, i;
-
 			// initialise chartConfig series data
 			for (i = 0; i < seriesCount; i++) {
 				if (this.series[i] && this.series[i].plot != 'flags') {
@@ -264,18 +193,15 @@ Ext.define("adapter.HighStock", {
 				this.chartConfig.series[i] = this.series[i];
 				this.chartConfig.series[i].type = this.chartConfig.series[i].plot ? this.chartConfig.series[i].plot : 'line';
 			}
-
 			// NOTE: Multiple series, a store for each series
 			if (this.stores.length == this.series.length) {
 				for (var s = 0; s < this.stores.length; s++) {
-
 					// If this is a flags data series. Ignore
 					if (this.chartConfig.series[s].type == 'flags') {
 						continue;
 					}
 
 					var items = this.stores[s].data.items;
-					var xFieldData = [];
 
 					for (var x = 0; x < items.length; x++) {
 						var record = items[x];
@@ -289,16 +215,12 @@ Ext.define("adapter.HighStock", {
 			else {
 				var store = this.stores[0];
 				var items = store.data.items;
-				var xFieldData = [];
-
 				for (var x = 0; x < items.length; x++) {
 					for (var s = 0; s < this.series.length; s++) {
-
 						// If this is a flags data series. Ignore
 						if (this.chartConfig.series[s].type == 'flags') {
 							continue;
 						}
-
 						var record = items[x];
 						var serie = this.series[s], point;
 						point = serie.getData(record);
@@ -308,16 +230,13 @@ Ext.define("adapter.HighStock", {
 			}
 		}
 		catch (e) {
-
 		}
-
 		//Redraw the chart
 		if (this.chart && this.rendered) {
 			if (this.resizable) {
 				for (var i = 0; i < this.series.length; i++) {
 					this.series[i].visible = this.chart.series[i].visible;
 				}
-
 				// Destroy
 				this.chart.destroy();
 				delete this.chart;
@@ -325,22 +244,20 @@ Ext.define("adapter.HighStock", {
 				// Create a new chart
 				var seriesConfig = this.chartConfig.series;
 				this.chart = new Highcharts.StockChart(this.chartConfig);
-				// StockChart() will remove chartConfig.series which causes
-				// all sort of troule. Restore it
+
+				// StockChart() will remove chartConfig.series which causes errors. Restore it.
 				this.chartConfig.series = seriesConfig;
 			}
-
-			//Create the chart
 		}
 		else if (this.rendered) {
 			// Create the chart
 			var seriesConfig = this.chartConfig.series;
 			this.chart = new Highcharts.StockChart(this.chartConfig);
+
 			// StockChart() will remove chartConfig.series which causes
 			// all sort of troule. Restore it
 			this.chartConfig.series = seriesConfig;
 		}
-
 		try {
 			for (i = 0; i < this.series.length; i++) {
 				if (!this.series[i].visible) {
@@ -349,7 +266,6 @@ Ext.define("adapter.HighStock", {
 			}
 		}
 		catch (e) {
-
 		}
 	},
 	//@deprecated
@@ -359,7 +275,6 @@ Ext.define("adapter.HighStock", {
 	//private
 	updatexAxisData: function() {
 		var data = [], items = this.store.data.items;
-
 		if (this.xField && this.store) {
 			for (var i = 0; i < items.length; i++) {
 				data.push(items[i].data[this.xField]);
@@ -373,11 +288,9 @@ Ext.define("adapter.HighStock", {
 		}
 	},
 	bindComponent: function(bind) {
-
 		// Make the chart update the positions
 		// positions are based on the window object and not on the
 		// owner object.
-
 		var getWindow = function(parent) {
 			if (parent.ownerCt) {
 				return getWindow(parent.ownerCt);
@@ -386,8 +299,8 @@ Ext.define("adapter.HighStock", {
 				return parent;
 			}
 		};
-		var w = getWindow(this);
 
+		var w = getWindow(this);
 		if (bind) {
 			w.on('move', this.onMove, this);
 			w.on('resize', this.onResize, this);
@@ -404,9 +317,7 @@ Ext.define("adapter.HighStock", {
 		}
 	},
 	bindSeriesStore: function(series_index, store, initial) {
-
 		var series_store = this.stores[series_index];
-
 		if (!initial && series_store) {
 			if (store !== series_store && series_store.autoDestroy) {
 				series_store.destroy();
@@ -420,7 +331,6 @@ Ext.define("adapter.HighStock", {
 				series_store.un("clear", this.onClear, this);
 			}
 		}
-
 		if (store) {
 			store = Ext.StoreMgr.lookup(store);
 			store.on({
@@ -433,18 +343,15 @@ Ext.define("adapter.HighStock", {
 				clear: this.onClear
 			});
 		}
-
 		this.stores[series_index] = store;
 		if (store && !initial) {
 			// This should eventually call up this.onLoad
 			store.load();
 		}
 	},
-
 	// Changes the data store bound to this chart and refreshes it.
 	// @param {Store} store The store to bind to this chart
 	bindStore: function(store, initial) {
-
 		if (!initial && this.store) {
 			if (store !== this.store && this.store.autoDestroy) {
 				this.store.destroy();
@@ -458,7 +365,6 @@ Ext.define("adapter.HighStock", {
 				this.store.un("clear", this.onClear, this);
 			}
 		}
-
 		if (store) {
 			store = Ext.StoreMgr.lookup(store);
 			store.on({
@@ -471,18 +377,15 @@ Ext.define("adapter.HighStock", {
 				clear: this.onClear
 			});
 		}
-
 		this.store = store;
 		if (store && !initial) {
 			this.refresh();
 		}
 	},
-
 	// Complete refresh of the chart
 	refresh: function() {
 		this.draw();
 	},
-
 	// Update a selected row.
 	refreshRow: function(record) {
 		var index = this.store.indexOf(record);
@@ -498,16 +401,13 @@ Ext.define("adapter.HighStock", {
 					serie.data[index].update(point);
 				}
 			}
-
 			if (this.xField) {
 				this.updatexAxisData();
 			}
 		}
 	},
-
 	// A function to delay the updates
 	// @param {Integer} delay Set a custom delay
-
 	update: function(delay) {
 		var cdelay = delay || this.updateDelay;
 		if (!this.updateTask) {
@@ -530,7 +430,6 @@ Ext.define("adapter.HighStock", {
 	onAdd: function(ds, records, index) {
 
 		var redraw = false, xFieldData = [];
-
 		for (var i = 0; i < records.length; i++) {
 			var record = records[i];
 			if (i == records.length - 1) {
@@ -539,7 +438,6 @@ Ext.define("adapter.HighStock", {
 			if (this.xField) {
 				xFieldData.push(record.data[this.xField]);
 			}
-
 			// Note: The for loop has to rely this.seres.length, not
 			// this.chart.series.length because after StockChart()
 			// is created, this.chart.series is inserted with a
@@ -557,9 +455,8 @@ Ext.define("adapter.HighStock", {
 		if (this.xField) {
 			this.chart.xAxis[0].setCategories(xFieldData, true);
 		}
-
 	},
-	//private
+	// private
 	onResize: function() {
 		adapter.HighStock.superclass.onResize.call(this);
 		this.update();
@@ -568,7 +465,7 @@ Ext.define("adapter.HighStock", {
 	onRemove: function(ds, record, index, isUpdate) {
 		for (var i = 0; i < this.series.length; i++) {
 			var s = this.series[i];
-			if (s.type == 'pie' && s.useTotals) {
+			if (s.useTotals) {
 				s.removeData(record, index);
 				this.chart.series[i].setData(s.getTotals());
 			}
@@ -609,11 +506,8 @@ Ext.define("adapter.HighStock", {
 // @class Ext.ux.HighStock.Series
 // This class registers all available series, and provide backward compatibility
 // @constructor
-
 adapter.HighStock.Series = function() {
-
 	var items = new Array(), values = new Array();
-
 	return {
 		reg: function(id, cls) {
 			items.push(cls);

@@ -33,7 +33,7 @@
 			Ext.Error.raise('Application error: Controller [ChartController] is unavailable');
 		}
 	},
-	buttonLoadClick: function(e, eOpts) {
+	buttonLoadClick: function() {
 		var datefieldFrom = Ext.ComponentQuery.query('chartOptionsPanel #datefieldFrom')[0].rawValue;
 		var datefieldTo = Ext.ComponentQuery.query('chartOptionsPanel #datefieldTo')[0].rawValue;
 		try {

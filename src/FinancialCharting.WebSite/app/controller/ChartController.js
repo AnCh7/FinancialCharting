@@ -1,9 +1,6 @@
 ﻿function initMarketDataStore(arg) {
-
 	var store = arg.getMarketDataStoreStore();
-
 	store.on('load', arg.onLoad, arg, {
-
 	});
 
 	store.getProxy().extraParams = {
@@ -14,12 +11,10 @@
 		From: arg.from,
 		To: arg.to
 	};
-
 	return store;
 }
 
 function reCreateChart(me, store) {
-
 	var sb = Ext.getCmp('bottom');
 	sb.setStatus({
 		text: 'Ready',
@@ -38,21 +33,6 @@ function reCreateChart(me, store) {
 
 	var config;
 	switch (me.sourceCode) {
-		case 'NIKKEI':
-			if (me.columns.length == 2) {
-				config = adapter.HighStockConfig.getConfig('DataOneField');
-			}
-			if (me.columns.length == 3) {
-				config = adapter.HighStockConfig.getConfig('DataTwoFields');
-			}
-			if (me.columns.length == 5) {
-				config = adapter.HighStockConfig.getConfig('OhlcData');
-			}
-			if (me.columns.length == 6) {
-				config = adapter.HighStockConfig.getConfig('OhlcvData');
-			}
-			break;
-
 		case 'BCHAIN':
 		case 'EUREKA':
 		case 'ML':
@@ -66,7 +46,6 @@ function reCreateChart(me, store) {
 		case 'SEC':
 			config = adapter.HighStockConfig.getConfig('DataOneField');
 			break;
-
 		case 'QUANDL':
 		case 'PSYCH':
 			if (me.columns.length == 3) {
@@ -76,21 +55,17 @@ function reCreateChart(me, store) {
 				config = adapter.HighStockConfig.getConfig('DataThreeFields');
 			}
 			break;
-
 		case 'FINRA':
 			if (me.columns.length == 4) {
 				config = adapter.HighStockConfig.getConfig('DataThreeFields');
 			}
 			break;
-
 		case 'PHILSE':
 			config = adapter.HighStockConfig.getConfig('OhlcData');
 			break;
-
 		case 'GOOG':
 			config = adapter.HighStockConfig.getConfig('OhlcvData');
 			break;
-
 		case 'ASX':
 			if (me.columns.length == 2) {
 				config = adapter.HighStockConfig.getConfig('DataOneField');
@@ -99,14 +74,12 @@ function reCreateChart(me, store) {
 				config = adapter.HighStockConfig.getConfig('OhlcvOpenInterestData');
 			}
 			break;
-
 		case 'EUREX':
 		case 'LIFFE':
 		case 'MGEX':
 		case 'PXDATA':
 			config = adapter.HighStockConfig.getConfig('OhlcvOpenInterestData');
 			break;
-
 		case 'BUDAPESTSE':
 			if (me.columns.length == 2) {
 				config = adapter.HighStockConfig.getConfig('DataOneField');
@@ -115,11 +88,9 @@ function reCreateChart(me, store) {
 				config = adapter.HighStockConfig.getConfig('OhlcData');
 			}
 			break;
-
 		case 'SGX':
 			config = adapter.HighStockConfig.getConfig('SGXData');
 			break;
-
 		case 'YAHOO':
 			if (me.columns.length == 6) {
 				config = adapter.HighStockConfig.getConfig('OhlcvData');
@@ -128,7 +99,6 @@ function reCreateChart(me, store) {
 				config = adapter.HighStockConfig.getConfig('YAHOOData');
 			}
 			break;
-
 		default:
 			if (me.columns.length == 2) {
 				config = adapter.HighStockConfig.getConfig('DataOneField');
@@ -151,7 +121,6 @@ function reCreateChart(me, store) {
 				break;
 			}
 	}
-
 	if (!config) {
 		sb.setStatus({
 			text: "Not supported datasource",
@@ -236,8 +205,7 @@ Ext.define('HighCharts.controller.ChartController', {
 			mainChart.loadStores();
 		}
 	},
-	tickersGridISelectionChange: function(arg, records, eOpts) {
-
+	tickersGridISelectionChange: function(arg, records) {
 		if (records.length > 0) {
 			var me = this;
 			var record = records[0];
@@ -261,7 +229,7 @@ Ext.define('HighCharts.controller.ChartController', {
 			}
 		}
 	},
-	searchGridSelectionChange: function(arg, records, eOpts) {
+	searchGridSelectionChange: function(arg, records) {
 		if (records.length > 0) {
 			var me = this;
 			var record = records[0];

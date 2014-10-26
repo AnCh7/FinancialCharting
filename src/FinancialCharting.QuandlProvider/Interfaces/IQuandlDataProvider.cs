@@ -15,7 +15,7 @@ namespace FinancialCharting.QuandlProvider.Interfaces
 	{
 		OperationResult<List<DataSource>> GetFinancialDataSources();
 
-		OperationResult<List<DataSource>> GetAllFinancialDataSources();
+		OperationResult<List<DataSource>> GetAllFinancialDataSources(string url);
 
 		OperationResult<DataSet> GetTickers(string query, bool isSearch, PagingOptions paging);
 

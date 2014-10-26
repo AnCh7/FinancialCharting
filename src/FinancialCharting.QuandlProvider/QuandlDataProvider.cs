@@ -51,12 +51,12 @@ namespace FinancialCharting.QuandlProvider
 			}
 		}
 
-		public OperationResult<List<DataSource>> GetAllFinancialDataSources()
+		public OperationResult<List<DataSource>> GetAllFinancialDataSources(string url)
 		{
 			try
 			{
 				var web = new HtmlWeb {AutoDetectEncoding = false, OverrideEncoding = Encoding.UTF8,};
-				var doc = web.Load("https://www.quandl.com/resources/data-sources");
+				var doc = web.Load(url);
 
 				var node = doc.GetElementbyId("Financial-Data");
 
@@ -158,7 +158,7 @@ namespace FinancialCharting.QuandlProvider
 				}
 				else
 				{
-					restRequest.AddParameter("collapse", TimeframeType.DAILY.ToString().ToLower());
+					restRequest.AddParameter("collapse", TimeframeType.NONE.ToString().ToLower());
 				}
 
 				if (request.Transformation.HasValue)
@@ -182,7 +182,14 @@ namespace FinancialCharting.QuandlProvider
 				else
 				{
 					var actual = response.Content.FromJson<RootObjectMarketData>();
-					if (actual.data.Any() && actual.column_names.Any())
+
+					if (!string.IsNullOrEmpty(actual.error))
+					{
+						return new OperationResult<List<IMarketData>>(false, actual.error);
+					}
+
+					if (actual.data != null && actual.data.Any() &&
+						actual.column_names != null && actual.column_names.Any())
 					{
 						var list = new List<IMarketData>();
 

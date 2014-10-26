@@ -50,8 +50,7 @@
 			});
 		}
 	},
-	initComponent: function() {
-
+	initComponent: function () {
 		this.store = Ext.create('HighCharts.store.TickerStore');
 
 		this.store.getProxy().extraParams = {
@@ -63,7 +62,6 @@
 		});
 
 		this.store.on('load', this.onload, this, {
-
 		});
 
 		this.callParent(arguments);
@@ -84,7 +82,6 @@
 			this.store.load();
 		}
 		this.on('expand', this.onExpand, this, {
-		
 		});
 	},
 	onExpand: function() {

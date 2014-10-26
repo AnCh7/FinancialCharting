@@ -114,7 +114,6 @@
 		var me = this;
 		me.view.refresh();
 		me.searchValue = me.getSearchValue();
-
 		if (me.searchValue !== null) {
 			this.store.getProxy().extraParams = {
 				Query: me.searchValue

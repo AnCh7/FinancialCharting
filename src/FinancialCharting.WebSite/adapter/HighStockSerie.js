@@ -1,7 +1,7 @@
 // @class Ext.ux.HighStock.Serie
 // Series class for the highcharts widget.
-// @constructor
 Ext.define('adapter.HighStockSerie', {
+
 	type: null,
 
 	//The field used to access the x-axis value from the items from the data source.

@@ -9,7 +9,9 @@
 	listeners: {
 		render: {
 			fn: function() {
-				Ext.fly(Ext.getCmp('clock').getEl().parent()).addCls('x-status-text-panel').createChild({ cls: 'spacer' });
+				Ext.fly(Ext.getCmp('clock').getEl().parent()).addCls('x-status-text-panel').createChild({
+					 cls: 'spacer'
+				});
 				Ext.TaskManager.start({
 					run: function() {
 						Ext.fly(Ext.getCmp('clock').getEl()).update(Ext.Date.format(new Date(), 'g:i:s A'));

@@ -7,6 +7,7 @@ using System.Linq;
 
 using Autofac;
 
+using FinancialCharting.Library.Configuration;
 using FinancialCharting.Library.Enum;
 using FinancialCharting.Library.Models;
 using FinancialCharting.Library.Models.Common;
@@ -55,7 +56,7 @@ namespace FinancialCharting.Service
 				OperationResult<List<DataSource>> result;
 				if (Request.PathInfo.EndsWith("all"))
 				{
-					result = _dataProvider.GetAllFinancialDataSources();
+					result = _dataProvider.GetAllFinancialDataSources(QuandlSettings.QuandlWebUrl);
 				}
 				else
 				{

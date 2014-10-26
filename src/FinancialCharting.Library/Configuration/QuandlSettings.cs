@@ -12,7 +12,7 @@ namespace FinancialCharting.Library.Configuration
 	{
 		public const string QuandlUrl = "http://www.quandl.com/api/v1/datasets/";
 		public const string QuandlSearchUrl = "http://www.quandl.com/api/v2/";
-
+		public const string QuandlWebUrl = "https://www.quandl.com/resources/data-sources";
 		public const string QuandlToken = "PxP16XZxY6xcFyiakHV6";
 
 		public static readonly List<DataSource> DataSources = new List<DataSource>()
@@ -21,7 +21,6 @@ namespace FinancialCharting.Library.Configuration
 			new DataSource {Name = "Block Chain", Count = 30, Description = "Bitcoin data", Code = "BCHAIN"},
 			new DataSource {Name = "Yahoo Finance", Count = 95000, Description = "US mutual funds and ETFs, global indexes", Code = "YAHOO"},
 			new DataSource {Name = "Quandl", Count = 2500, Description = "Exchange rates", Code = "QUANDL"},
-			new DataSource {Name = "Nikkei Group", Count = 15, Description = "Daily indexes published by the Nikkei group.", Code = "NIKKEI"},
 			new DataSource {Name = "Renaissance Capital", Count = 5, Description = "Monthly US IPO statistics.", Code = "RENCAP"},
 			new DataSource {Name = "World Federation of Exchanges", Count = 250, Description = "Comparative market statistics for exchanges around the world", Code = "WFE"},
 			new DataSource {Name = "World Gold Council", Count = 200, Description = "Gold prices", Code = "WGC"},
@@ -40,6 +39,7 @@ namespace FinancialCharting.Library.Configuration
 			new DataSource {Name = "Merrill Lynch", Count = 25, Description = "US bonds and equities", Code = "ML"}
 
 			// Not implemented
+			//new DataSource {Name = "Nikkei Group", Count = 15, Description = "Daily indexes published by the Nikkei group.", Code = "NIKKEI"},
 			//new DataSource {Name = "Standard and Poor's", Count = 450, Description = "Housing and equity indexes including Case-Shiller", Code = "SANDP"},
 			//new DataSource {Name = "Open Financial Data Project", Count = 18000, Description = "Futures (CME, ICE, CFTC), indexes (WSJ), financial ratios (Damodaran) and more", Code = "OFDP"},
 			//new DataSource {Name = "PsychSignal", Count = 14000, Description = "Bullish/bearish sentiment index and sentiment volume ratios for thousands of stocks.", Code = "PSYCH"},
