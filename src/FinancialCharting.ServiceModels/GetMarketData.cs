@@ -17,10 +17,10 @@ namespace FinancialCharting.ServiceModels
 	[Route("/marketdata/{DataSource}/{Ticker}", "GET")]
 	public class GetMarketData : IReturn<GetMarketDataResponse>
 	{
-		[ApiMember(Name = "DataSource", ParameterType = "path", DataType = "string", IsRequired = true)]
+		[ApiMember(Name = "DataSource", ParameterType = "query", DataType = "string", IsRequired = true)]
 		public string DataSource { get; set; }
 
-		[ApiMember(Name = "Ticker", ParameterType = "path", DataType = "string", IsRequired = true)]
+		[ApiMember(Name = "Ticker", ParameterType = "query", DataType = "string", IsRequired = true)]
 		public string Ticker { get; set; }
 
 		[ApiMember(Name = "From", ParameterType = "query", DataType = "dateTime", IsRequired = false)]

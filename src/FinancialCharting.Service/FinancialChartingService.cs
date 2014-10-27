@@ -46,20 +46,29 @@ namespace FinancialCharting.Service
 
 			try
 			{
-				const string key = "FinacialDataSources";
-				var cached = _cachingManager.GetFinancialDataSources(key);
-				if (cached != null)
-				{
-					return cached;
-				}
+				string key = string.Empty;
 
 				OperationResult<List<DataSource>> result;
 				if (Request.PathInfo.EndsWith("all"))
 				{
+					key = "AllFinacialDataSources";
+					var cached = _cachingManager.GetFinancialDataSources(key);
+					if (cached != null)
+					{
+						return cached;
+					}
+
 					result = _dataProvider.GetAllFinancialDataSources(QuandlSettings.QuandlWebUrl);
 				}
 				else
 				{
+					key = "FinacialDataSources";
+					var cached = _cachingManager.GetFinancialDataSources(key);
+					if (cached != null)
+					{
+						return cached;
+					}
+
 					result = _dataProvider.GetFinancialDataSources();
 				}
 
@@ -260,7 +269,7 @@ namespace FinancialCharting.Service
 						var cachedMarketData = _cachingManager.GetMarketData(currentChart.ToJson());
 						if (cachedMarketData == null)
 						{
-							throw new DataException("No market data for current chart was found");
+							throw new DataException("No market data for current chart was found. Please run GET /marketdata first.");
 						}
 						else
 						{

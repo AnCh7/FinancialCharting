@@ -14,10 +14,10 @@ namespace FinancialCharting.ServiceModels
 	[Route("/tickers/{PerPage}/{PageNumber}", "GET")]
 	public class GetTickers : IReturn<GetTickersResponse>
 	{
-		[ApiMember(Name = "PerPage", ParameterType = "path", DataType = "int", IsRequired = true)]
+		[ApiMember(Name = "PerPage", ParameterType = "query", DataType = "int", IsRequired = true)]
 		public int PerPage { get; set; }
 
-		[ApiMember(Name = "PageNumber", ParameterType = "path", DataType = "int", IsRequired = true)]
+		[ApiMember(Name = "PageNumber", ParameterType = "query", DataType = "int", IsRequired = true)]
 		public int PageNumber { get; set; }
 
 		[ApiMember(Name = "Query", ParameterType = "query", DataType = "string", IsRequired = false)]

@@ -17,9 +17,9 @@ namespace FinancialCharting.Library.Configuration
 
 		public static readonly List<DataSource> DataSources = new List<DataSource>()
 		{
+			new DataSource {Name = "Yahoo Finance", Count = 95000, Description = "US mutual funds and ETFs, global indexes", Code = "YAHOO"},
 			new DataSource {Name = "Google Finance", Count = 43000, Description = "US equities", Code = "GOOG"},
 			new DataSource {Name = "Block Chain", Count = 30, Description = "Bitcoin data", Code = "BCHAIN"},
-			new DataSource {Name = "Yahoo Finance", Count = 95000, Description = "US mutual funds and ETFs, global indexes", Code = "YAHOO"},
 			new DataSource {Name = "Quandl", Count = 2500, Description = "Exchange rates", Code = "QUANDL"},
 			new DataSource {Name = "Renaissance Capital", Count = 5, Description = "Monthly US IPO statistics.", Code = "RENCAP"},
 			new DataSource {Name = "World Federation of Exchanges", Count = 250, Description = "Comparative market statistics for exchanges around the world", Code = "WFE"},

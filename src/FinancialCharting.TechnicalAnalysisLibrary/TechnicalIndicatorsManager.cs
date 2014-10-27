@@ -47,48 +47,48 @@ namespace FinancialCharting.TechnicalAnalysisLibrary
 				switch (parameters.Type)
 				{
 					case IndicatorType.BBANDS:
-						return CalculateBbands(list.Select(x => x.Date).ToList(), list.Select(x => x.Close).ToList(), parameters);
+						return CalculateBbands(list.Select(x => x.Datetime).ToList(), list.Select(x => x.Close).ToList(), parameters);
 
 					case IndicatorType.RSI:
-						return CalculateRsi(list.Select(x => x.Date).ToList(), list.Select(x => x.Close).ToList(), parameters);
+						return CalculateRsi(list.Select(x => x.Datetime).ToList(), list.Select(x => x.Close).ToList(), parameters);
 
 					case IndicatorType.SMA:
-						return CalculateSma(list.Select(x => x.Date).ToList(), list.Select(x => x.Close).ToList(), parameters);
+						return CalculateSma(list.Select(x => x.Datetime).ToList(), list.Select(x => x.Close).ToList(), parameters);
 
 					case IndicatorType.EMA:
-						return CalculateEma(list.Select(x => x.Date).ToList(), list.Select(x => x.Close).ToList(), parameters);
+						return CalculateEma(list.Select(x => x.Datetime).ToList(), list.Select(x => x.Close).ToList(), parameters);
 
 					case IndicatorType.WMA:
-						return CalculateWma(list.Select(x => x.Date).ToList(), list.Select(x => x.Close).ToList(), parameters);
+						return CalculateWma(list.Select(x => x.Datetime).ToList(), list.Select(x => x.Close).ToList(), parameters);
 
 					case IndicatorType.STOCH:
-						return CalculateStoch(list.Select(x => x.Date).ToList(),
+						return CalculateStoch(list.Select(x => x.Datetime).ToList(),
 											  list.Select(x => x.High).ToList(),
 											  list.Select(x => x.Low).ToList(),
 											  list.Select(x => x.Close).ToList(),
 											  parameters);
 
 					case IndicatorType.AROON:
-						return CalculateAroon(list.Select(x => x.Date).ToList(),
+						return CalculateAroon(list.Select(x => x.Datetime).ToList(),
 											  list.Select(x => x.High).ToList(),
 											  list.Select(x => x.Low).ToList(),
 											  parameters);
 
 					case IndicatorType.AROONOSC:
-						return CalculateAroonOsc(list.Select(x => x.Date).ToList(),
+						return CalculateAroonOsc(list.Select(x => x.Datetime).ToList(),
 												 list.Select(x => x.High).ToList(),
 												 list.Select(x => x.Low).ToList(),
 												 parameters);
 
 					case IndicatorType.ADX:
-						return CalculateAdx(list.Select(x => x.Date).ToList(),
+						return CalculateAdx(list.Select(x => x.Datetime).ToList(),
 											list.Select(x => x.High).ToList(),
 											list.Select(x => x.Low).ToList(),
 											list.Select(x => x.Close).ToList(),
 											parameters);
 
 					case IndicatorType.MACD:
-						return CalculateMacd(list.Select(x => x.Date).ToList(),
+						return CalculateMacd(list.Select(x => x.Datetime).ToList(),
 											 list.Select(x => x.Close).ToList(),
 											 parameters);
 

@@ -17,16 +17,19 @@ namespace FinancialCharting.Library.Models.MarketData.Common
 	{
 		public DateComponent(List<object> data)
 		{
-			Date = Convert.ToDateTime(data[0]);
+			Datetime = Convert.ToDateTime(data[0]);
+			Date = data[0].ToString();
 		}
 
-		[DataMember(Name = "date", Order = 0)]
-		public DateTime Date { get; set; }
+		public DateTime Datetime { get; set; }
 
+		[DataMember(Name = "date", Order = 0)]
+		public string Date { get; set; }
+		
 		[DataMember(Name = "date_unix", Order = 1)]
 		public long UnixTimeMs
 		{
-			get { return Date.ToUnixTimeMs(); }
+			get { return Datetime.ToUnixTimeMs(); }
 		}
 	}
 }

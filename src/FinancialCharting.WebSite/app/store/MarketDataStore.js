@@ -8,7 +8,8 @@
 		pageParam: undefined,
 		limitParam: undefined,
 		startParam: undefined,
-		url: 'http://localhost:1476/marketdata',
+		//url: 'http://localhost:1476/marketdata',
+		url: 'http://quandlcharting.azurewebsites.net/marketdata',
 		extraParams:
 		{
 			DataSource: '',
