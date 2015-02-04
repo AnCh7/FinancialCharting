@@ -8,8 +8,8 @@
 		pageParam: "PageNumber",
 		limitParam: "PerPage",
 		startParam: undefined,
-		//url: 'http://localhost:1476/tickers',
-		url: 'http://quandlcharting.azurewebsites.net/tickers',
+		url: 'http://localhost:1476/tickers',
+		//url: 'http://quandlcharting.azurewebsites.net/tickers',
 		extraParams:
 		{
 			DataSource: ''

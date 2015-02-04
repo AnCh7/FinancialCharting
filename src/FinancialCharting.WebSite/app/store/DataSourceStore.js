@@ -5,8 +5,8 @@
 	alias: 'widget.dataSourceStore',
 	proxy: {
 		type: 'jsonp',
-		//url: 'http://localhost:1476/financialDataSources',
-		url: 'http://quandlcharting.azurewebsites.net/financialDataSources',
+		url: 'http://localhost:1476/financialDataSources',
+		//url: 'http://quandlcharting.azurewebsites.net/financialDataSources',
 		pageParam: undefined,
 		startParam: undefined,
 		limitParam: undefined,
